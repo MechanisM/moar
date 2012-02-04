@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+"""
+# moar.engines.pil
+
+PIL engine.
+
+"""
+from StringIO import StringIO
+
+available = True
+try:
+    try:
+        from PIL import Image, ImageFile
+    except ImportError:
+        import Image, ImageFile
+except ImportError:
+    available = False
+
+from .base import BaseEngine
+
+
+class Engine(BaseEngine):
+
+    name = 'pil'
+    
+    def load_image(self, path):
+        return Image.open(path)
+    
+    def get_data(self, im, options):
+        ImageFile.MAXBLOCK = 1024 * 1024
+        buf = StringIO()
+        format = options['format']
+        params = {
+            'format': format,
+            'quality': options['quality'],
+        }
+        if format == 'JPEG' and options['progressive']:
+            params['progressive'] = True
+        
+        im.save(buf, **params)
+        raw_data = buf.getvalue()
+        buf.close()
+        return raw_data
+    
+    def _set_orientation(self, im):
+        """Orientate the resulting thumbnail with respect to the orientation
+        EXIF tags (if available)."""
+        try:
+            exif = im._getexif()
+        except AttributeError:
+            exif = None
+        if exif:
+            orientation = exif.get(0x0112)
+            if orientation == 2:
+                im = im.transpose(Image.FLIP_LEFT_RIGHT)
+            elif orientation == 3:
+                im = im.rotate(180)
+            elif orientation == 4:
+                im = im.transpose(Image.FLIP_TOP_BOTTOM)
+            elif orientation == 5:
+                im = im.rotate(-90).transpose(Image.FLIP_LEFT_RIGHT)
+            elif orientation == 6:
+                im = im.rotate(-90)
+            elif orientation == 7:
+                im = im.rotate(90).transpose(Image.FLIP_LEFT_RIGHT)
+            elif orientation == 8:
+                im = im.rotate(90)
+        return im
+    
+    def _get_image_size(self, im):
+        return im.size
+    
+    def _scale(self, im, width, height):
+        return im.resize((width, height), resample=Image.ANTIALIAS)
+

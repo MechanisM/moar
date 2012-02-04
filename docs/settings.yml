@@ -1,0 +1,7 @@
+## Project settings
+content_dir: src
+build_dir: build
+default_theme: html
+
+meta:
+  - title: 'Moar Thumbnails documentation'

@@ -1,0 +1,189 @@
+<!DOCTYPE html public "display of awesomeness">
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Thumbnail generation – Moar Thumbnails documentation</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+<script src="static/scripts/jquery1.7.1.min.js"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src="/static/scripts/selectivizr.js"></script>
+<![endif]-->
+<link href="static/styles/main.css" rel="stylesheet" />
+<link href="static/styles/pygments.css" rel="stylesheet" />
+<script src="static/scripts/modernizr2.js"></script>
+
+</head>
+<body>
+
+<nav id="nav">
+  <header>
+    <a href="/" id="logo">Moar Thumbnails documentation</a>
+  </header>
+  <div class="sections">
+  
+  </div>
+  <footer>
+    <div class="✓">Powered by <a href="http://claydocs.lucumalabs.com">ClayDocs</a></div>
+  </footer>
+</nav>
+
+<div id="content">
+
+<section class="content page">
+  <h1>Thumbnail generation</h1>
+
+<p>Syntax:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">geometry</span><span class="p">,</span> <span class="p">(</span><span class="n">key1</span><span class="p">,</span> <span class="n">value1</span><span class="p">),</span> <span class="p">(</span><span class="n">key2</span><span class="p">,</span> <span class="n">value2</span><span class="p">),</span> <span class="o">...</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The <code>thumbnail</code> function takes a source image, a geometry parameter, a number of optionals filters as tuples and/or a number of custom options (the same ones of the <a href="thumbnailer.html">Thumbnailer</a> class), and returns the URL of the generated thumbnail.</p>
+
+<div class="highlight"><pre><span class="x">&lt;img src=&quot;</span><span class="cp">{{</span> <span class="nv">thumbnail</span><span class="o">(</span> <span class="err">...</span> <span class="o">)</span> <span class="cp">}}</span><span class="x">&quot; /&gt;</span>
+</pre></div>
+
+
+<h3>Source</h3>
+
+<p>Source must be a local image represented as an object or a dictionary with the following attributes or keys:</p>
+
+<ul>
+<li><strong>base_path</strong>: absolute path to the container of the images. Eg: <code>/var/www/media/</code></li>
+<li><strong>base_url</strong>: URL to the container of the images. Eg: <code>/media/</code></li>
+<li><strong>path</strong>: the path to the image relative to <code>base_path</code>. Eg: <code>2012/01/09/</code>.</li>
+<li><strong>name</strong>: the filename of the image.</li>
+</ul>
+
+<h3>Geometry</h3>
+
+<p>Geometry is specified as <code>width</code><code>x</code><code>height</code>, <code>width</code> or <code>x</code><code>height</code>.
+Width and height are in pixels. </p>
+
+<p>This value can either be a string or a callable that return a valid geometry string. Examples:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200&#39;</span><span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;x100&#39;</span><span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">get_geometry</span><span class="p">)</span>
+</pre></div>
+
+
+<p>If both width and height are given, the image is rescaled to the maximum size that fits in a width x height box, preserving the aspect ratio. </p>
+
+<p>If the <code>resize</code> option is <code>True</code>, however,   the image is deformed to match exactly the given dimensions,</p>
+
+<p>If the geometry is <code>None</code> or an empty string, no rescaling will be applied.</p>
+
+<h3>Filters</h3>
+
+<p>The filters are defined as a sequence of tuples.</p>
+
+<pre><code>('filter_name', value), ('filter_name', value1, value2), ...
+</code></pre>
+
+<p>They are defined this way instead of using keyword arguments because the order in which are applied could matter.</p>
+
+<p>The filters described below are those available in the shipped engines, but you can easily add more (see the section <a href="extending.html">&ldquo;Extending the library&rdquo;</a> for more info about that).</p>
+
+<h4>crop (width, height, x=0, y=0)</h4>
+
+<p>Crop accepts a width, height and one or two optional values as the coordinates of the new top-left corner (<code>(0, 0)</code> by default). These last values can be integers (pixels), percentages or &lsquo;center&rsquo;.</p>
+
+<p>For example, some valid values are:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;15%&#39;</span><span class="p">,</span> <span class="s">&#39;10%&#39;</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+
+<h4>grayscale</h4>
+
+<p>If you include this filter (the value doesn&rsquo;t matter) it will turn the image into gray-scale.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;grayscale&#39;</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+
+<h4>sepia (tone=&lsquo;#fff0c0&rsquo;)</h4>
+
+<p>This filter will turn your image into sepia tones, making it looks like an old photo.</p>
+
+<p>The interesting trick about sepia images is that they are just gray-scale pictures with a different color palette. In this case the default sepia tone is #fff0c0.</p>
+
+<p>If you would want to change it, the tone can be expressed as a RGB list of values or like an hex string.</p>
+
+<p>Examples:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">192</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="s">&#39;#fff0c0&#39;</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+
+<h4>rotate (degrees)</h4>
+
+<p>Rotates the image counter-clockwise by a specified number of degrees. If degrees is negative, the rotation it&rsquo;s clockwise instead.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+
+<h4>blur (radius=2)</h4>
+
+<p>Apply a gaussian blur (smoothing) to the image. The <code>radius</code> argument determines the scale of fine detail that will be removed. Low values remove only very fine detail while high values remove larger levels of detail.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;blur&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+
+<h3>Options</h3>
+
+<p>The options overwrite the default ones defined in the <a href="thumbnailer.html">Thumbnailer</a> class.</p>
+
+<h4>upscale</h4>
+
+<p>Upscale is a boolean that controls if the image can be upscaled or not. For example if your source is <code>100x100</code> and you request a thumbnail of size <code>200x200</code> and upscale is <code>False</code> this will return a thumbnail of size 100x100. If upscale were <code>True</code> this would result in a thumbnail size <code>200x200</code> (upscaled). The default value is <code>True</code>.</p>
+
+<h4>quality</h4>
+
+<p>When the output format is jpeg, quality is a value between 0-100 that controls the thumbnail write quality. Default value is <code>95</code>.</p>
+
+<h4>progressive</h4>
+
+<p>This controls whether to save jpeg thumbnails as progressive jpegs. Default value is <code>True</code>.</p>
+
+<h4>orientation</h4>
+
+<p>This controls whether to orientate the resulting thumbnail with respect to the source EXIF tags for orientation. Default value is <code>True</code>.</p>
+
+<h4>format</h4>
+
+<p>This controls the write format and thumbnail extension. Formats supported by the shipped engines are <code>'JPEG'</code> and <code>'PNG'</code>. Default value is <code>'JPEG'</code>.</p>
+
+<h4>resize</h4>
+
+<p>Ignored unless both width and height are given in the geometry, this controls if the image is deformed to match exactly the given dimensions, regardless of the aspect ratio of the original image. If <code>resize</code> is <code>True</code>, the <code>upscale</code> option is ignored. Default value is <code>False</code>.</p>
+
+</section>
+<!-- .content .page -->
+
+</div>
+<!-- .content -->
+
+<script src="static/scripts/main.js"></script>
+</body>
+</html>

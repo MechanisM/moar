@@ -1,0 +1,120 @@
+<!DOCTYPE html public "display of awesomeness">
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Installation – Moar Thumbnails documentation</title>
+<meta name="description" content="Requirements for MoarThumbnails">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+<script src="static/scripts/jquery1.7.1.min.js"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src="/static/scripts/selectivizr.js"></script>
+<![endif]-->
+<link href="static/styles/main.css" rel="stylesheet" />
+<link href="static/styles/pygments.css" rel="stylesheet" />
+<script src="static/scripts/modernizr2.js"></script>
+
+</head>
+<body>
+
+<nav id="nav">
+  <header>
+    <a href="/" id="logo">Moar Thumbnails documentation</a>
+  </header>
+  <div class="sections">
+  
+  </div>
+  <footer>
+    <div class="✓">Powered by <a href="http://claydocs.lucumalabs.com">ClayDocs</a></div>
+  </footer>
+</nav>
+
+<div id="content">
+
+<section class="content page">
+  <h1>Installation</h1>
+
+<p>Just do</p>
+
+<pre><code>pip install moar
+</code></pre>
+
+<h2>Requirements</h2>
+
+<p>You need to have an image library installed. MoarThumbnails ships with support for the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a> and <a href="http://imagemagick.com/">GraphicsMagick</a> via <a href="http://bitbucket.org/hhatto/pgmagick/src">pgmagick</a>. </p>
+
+<p>The GraphicsMagick based engine <code>moar.engines.imagemagick.Engine</code> by default calls <code>convert</code> and <code>identify</code> shell commands. You can change the
+paths to these tools by passing the optional parameters <code>convert</code> and <code>identify</code> respectively, to the constructor. See <a href="thumbnailer.html">Thumbnailer options</a> for more details.</p>
+
+<h3>Python Imaging Library installation</h3>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>libjpeg</li>
+<li>zlib</li>
+</ul>
+
+<p>Ubuntu 10.04 package installation:</p>
+
+<pre><code>sudo apt-get install libjpeg62 libjpeg62-dev zlib1g-dev
+</code></pre>
+
+<p>Installing the <a href="http://www.pythonware.com/products/pil/">Python Imaging Library</a> using pip:</p>
+
+<pre><code>pip install PIL
+</code></pre>
+
+<p>Watch the output for messages on what support got compiled in, you at least want to see the following:</p>
+
+<pre><code>--- JPEG support available
+--- ZLIB (PNG/ZIP) support available
+</code></pre>
+
+<h3>GraphicsMagick installation</h3>
+
+<p>Ubuntu 10.04 package installation:</p>
+
+<pre><code>sudo apt-get install graphicsmagick
+</code></pre>
+
+<p>OSX installation with Homebrew:</p>
+
+<pre><code>brew install --use-clang --HEAD graphicsmagick
+</code></pre>
+
+<h3>pgmagick installation</h3>
+
+<p>Prerequisites:</p>
+
+<ul>
+<li>GraphicsMagick</li>
+<li>Boost.Python</li>
+</ul>
+
+<p>Ubuntu 10.04 prerequisites installation:</p>
+
+<pre><code>sudo apt-get install libgraphicsmagick++-dev
+sudo apt-get install libboost-python1.40-dev
+</code></pre>
+
+<p>OSX installation of prerequisites with Homebrew:</p>
+
+<pre><code>brew install boost
+</code></pre>
+
+<p>Installing pgmagick using pip:</p>
+
+<pre><code>pip install pgmagick
+</code></pre>
+
+</section>
+<!-- .content .page -->
+
+</div>
+<!-- .content -->
+
+<script src="static/scripts/main.js"></script>
+</body>
+</html>

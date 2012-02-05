@@ -18,7 +18,7 @@ from .base import BaseEngine
 
 class Engine(BaseEngine):
 
-    name = 'pgmagick'
+    name = 'magick'
 
     def load_image(self, path):
         return Image.open(path)
@@ -63,4 +63,3 @@ class Engine(BaseEngine):
         im.scale(geometry)
         return im
 
-        

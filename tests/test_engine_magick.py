@@ -4,7 +4,7 @@ import moar
 from .utils import *
 
 
-ENGINE = moar.engines.pil.Engine
+ENGINE = moar.engines.magick.Engine
 
 
 def test_load_image():

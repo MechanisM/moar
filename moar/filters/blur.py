@@ -30,20 +30,17 @@ except ImportError:
 
 
 class BlurFilter(object):
-
-    @classmethod
-    def pil(cls, im, *args, **options):
-        radius = cls.get_radius(args)
+        
+    def pil(self, im, *args, **options):
+        radius = self.get_radius(args)
         im = im.filter(MyGaussianBlur(radius))
         return im
     
-    @classmethod
-    def pgmagick(cls, im, *args, **options):
-        radius = cls.get_radius(args)
+    def magick(self, im, *args, **options):
+        radius = self.get_radius(args)
         im.blur(radius)
         return im
     
-    @classmethod
-    def get_radius(cls, args):
+    def get_radius(self, args):
         return args[0]
 

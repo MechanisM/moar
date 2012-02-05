@@ -20,9 +20,8 @@ except ImportError:
 
 class RotateFilter(object):
 
-    @classmethod
-    def pil(cls, im, *args, **options):
-        angle = cls.get_angle(args)
+    def pil(self, im, *args, **options):
+        angle = self.get_angle(args)
         im = im.convert('RGBA')
         im = im.rotate(angle, resample=Image.BICUBIC, expand=True)
 
@@ -34,13 +33,14 @@ class RotateFilter(object):
         
         return im
     
-    @classmethod
-    def pgmagick(cls, im, *args, **options):
-        angle = cls.get_angle(args)
+    def magick(self, im, *args, **options):
+        angle = self.get_angle(args)
+        # background = None
+        # if options.get('format') != 'PNG':
+        #     background = Color('#fff')
         im.rotate(angle)
         return im
     
-    @classmethod
-    def get_angle(cls, args):
+    def get_angle(self, args):
         return args[0]
 

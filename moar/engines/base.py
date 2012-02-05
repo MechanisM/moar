@@ -5,6 +5,7 @@
 Base engine
 
 """
+import inspect
 from math import ceil
 import os
 
@@ -28,7 +29,9 @@ class BaseEngine(object):
         im = self.set_orientation(im, options)
         im = self.set_geometry(im, thumb.geometry, options)
         im = self.apply_filters(im, thumb.filters, custom_filters, options)
-        return self.get_data(im, options)
+        data = self.get_data(im, options)
+        self.close_image(im)
+        return data
     
     def set_orientation(self, im, options):
         if options['orientation']:
@@ -89,6 +92,7 @@ class BaseEngine(object):
             else:
                 fn = f[0]
                 args = f[1:]
+            
             ff = self.get_filter(fn, custom_filters)
             im = ff(im, *args, **options)
         
@@ -101,6 +105,10 @@ class BaseEngine(object):
                 f = getattr(available_filters, fn)
         except AttributeError:
             raise FilterNotFound(fn)
+        
+        if inspect.isclass(f):
+            f = f()
+        
         try:
             ff = getattr(f, self.name)
         except AttributeError:
@@ -110,6 +118,9 @@ class BaseEngine(object):
     
     def load_image(self, path):
         raise NotImplementedError
+    
+    def close_image(self, im):
+        pass
     
     def get_data(self, im, options):
         raise NotImplementedError

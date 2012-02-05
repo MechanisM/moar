@@ -31,9 +31,8 @@ SEPIA_DEFAULT_TONE = (255, 240, 192)
 
 class SepiaFilter(object):
 
-    @classmethod
-    def pil(cls, im, *args, **options):
-        ramp = cls.get_ramp(args)
+    def pil(self, im, *args, **options):
+        ramp = self.get_ramp(args)
 
         original_mode = im.mode
         # Make grayscale
@@ -45,27 +44,24 @@ class SepiaFilter(object):
 
         return im
     
-    @classmethod
-    def pgmagick(cls, im, *args, **options):
-        ramp = cls.get_ramp(args)
+    def magick(self, im, *args, **options):
+        ramp = self.get_ramp(args)
 
         pass
 
         return im
     
-    @classmethod
-    def get_ramp(cls, args):
+    def get_ramp(self, args):
         if not args or not args[0]:
             tone = SEPIA_DEFAULT_TONE
         elif len(args) == 1:
-            tone = cls.hex_to_rgb(args[0])
+            tone = self.hex_to_rgb(args[0])
         else:
             tone = args[:3]
         
-        return cls.make_linear_ramp(tone)
+        return self.make_linear_ramp(tone)
     
-    @classmethod
-    def hex_to_rgb(cls, color):
+    def hex_to_rgb(self, color):
         """Transforms an hex color (eg: #ffaf2e, #fff) into a RGB tuple.
         """
         if not isinstance(color, basestring):
@@ -86,8 +82,7 @@ class SepiaFilter(object):
             raise ValueError("'%s' is not an hex color (%s)" %
                 (color, error.message))
     
-    @classmethod
-    def make_linear_ramp(cls, white):
+    def make_linear_ramp(self, white):
         """ Normalizes a RGB tuple to 0..1 values """ 
         ramp = []
         r, g, b = white
@@ -99,8 +94,7 @@ class SepiaFilter(object):
 
 class GrayscaleFilter(SepiaFilter):
 
-    @classmethod
-    def get_ramp(cls, args):
+    def get_ramp(self, args):
         tone = (255, 255, 255)
-        return cls.make_linear_ramp(tone)
+        return self.make_linear_ramp(tone)
 

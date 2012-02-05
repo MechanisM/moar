@@ -24,23 +24,20 @@ except ImportError:
 
 class CropFilter(object):
 
-    @classmethod
-    def pil(cls, im, *args, **options):
+    def pil(self, im, *args, **options):
         imw, imh = im.size
-        w, h, x, y = cls.get_bounds(args, imw, imh)
+        w, h, x, y = self.get_bounds(args, imw, imh)
         box = (x, y, x + w, y + h)
         return im.crop(box)
     
-    @classmethod
-    def pgmagick(cls, im, *args, **options):
+    def magick(self, im, *args, **options):
         g = im.size()
         w, h, x, y = cls.get_bounds(args, g.width(), g.height())
         geometry = Geometry(w, h, x, y)
         im.crop(geometry)
         return im
     
-    @classmethod
-    def get_bounds(cls, args, imw, imh):
+    def get_bounds(self, args, imw, imh):
         args = list(args)
 
         if (len(args) == 3):

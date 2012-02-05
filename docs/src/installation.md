@@ -35,15 +35,6 @@ Watch the output for messages on what support got compiled in, you at least want
     --- JPEG support available
     --- ZLIB (PNG/ZIP) support available
 
-### GraphicsMagick installation
-
-Ubuntu 10.04 package installation:
-
-    sudo apt-get install graphicsmagick
-
-OSX installation with Homebrew:
-
-    brew install --use-clang --HEAD graphicsmagick
 
 ### pgmagick installation
 
@@ -53,12 +44,12 @@ Prerequisites:
 * Boost.Python
 
 Ubuntu 10.04 prerequisites installation:
-
-    sudo apt-get install libgraphicsmagick++-dev
-    sudo apt-get install libboost-python1.40-dev
+    
+    sudo apt-get install graphicsmagick libgraphicsmagick++-dev libboost-python1.40-dev
 
 OSX installation of prerequisites with Homebrew:
     
+    brew install --use-clang --HEAD graphicsmagick
     brew install boost
 
 Installing pgmagick using pip:

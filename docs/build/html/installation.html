@@ -72,18 +72,6 @@ paths to these tools by passing the optional parameters <code>convert</code> and
 --- ZLIB (PNG/ZIP) support available
 </code></pre>
 
-<h3>GraphicsMagick installation</h3>
-
-<p>Ubuntu 10.04 package installation:</p>
-
-<pre><code>sudo apt-get install graphicsmagick
-</code></pre>
-
-<p>OSX installation with Homebrew:</p>
-
-<pre><code>brew install --use-clang --HEAD graphicsmagick
-</code></pre>
-
 <h3>pgmagick installation</h3>
 
 <p>Prerequisites:</p>
@@ -95,13 +83,13 @@ paths to these tools by passing the optional parameters <code>convert</code> and
 
 <p>Ubuntu 10.04 prerequisites installation:</p>
 
-<pre><code>sudo apt-get install libgraphicsmagick++-dev
-sudo apt-get install libboost-python1.40-dev
+<pre><code>sudo apt-get install graphicsmagick libgraphicsmagick++-dev libboost-python1.40-dev
 </code></pre>
 
 <p>OSX installation of prerequisites with Homebrew:</p>
 
-<pre><code>brew install boost
+<pre><code>brew install --use-clang --HEAD graphicsmagick
+brew install boost
 </code></pre>
 
 <p>Installing pgmagick using pip:</p>

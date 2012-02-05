@@ -10,6 +10,7 @@ __all__ = [
     'get_tpath',
     'get_source',
     'get_url',
+    'assert_exists',
     'assert_image',
     'assert_size',
     'remove_thumb',
@@ -22,6 +23,8 @@ PATH = 'res'
 
 THUMBSDIR = 't'
 CONTROLDIR = 'c'
+
+TOLERANCE = 1
 
 
 def get_cpath(name):
@@ -49,15 +52,30 @@ def assert_image(test, control, assert_equal=True):
     tp = get_tpath(test)
     cp = get_cpath(control)
 
-    with io.open(tp, 'rb') as f:
-        test_data = f.read()
-    with io.open(cp, 'rb') as f:
-        control_data = f.read()
+    test_data = list(Image.open(tp).getdata())
+    control_data = list(Image.open(cp).getdata())
+
+    equal = True
+    for i in range(len(test_data)):
+        if isinstance(test_data[i], int):
+            if abs(test_data[i] - control_data[i]) > TOLERANCE:
+                equal = False
+                break
+        else:
+            rt, gt, bt, at = test_data[i]
+            rc, gc, bc, ac = control_data[i]
+            dr = abs(rt - rc) > TOLERANCE
+            dg = abs(gt - gc) > TOLERANCE
+            db = abs(bt - bc) > TOLERANCE
+            da = abs(at - ac) > TOLERANCE
+            if dr or dg or db or da:
+                equal = False
+                break
     
     if assert_equal:
-        assert test_data == control_data
+        assert equal
     else:
-        assert test_data != control_data
+        assert not equal
 
 
 def assert_size(name, width=None, height=None):
@@ -68,6 +86,11 @@ def assert_size(name, width=None, height=None):
         assert w == width
     if height:
         assert h == height
+
+
+def assert_exists(name):
+    tpath = get_tpath(name)
+    assert os.path.exists(tpath)
 
 
 def remove_thumb(name):

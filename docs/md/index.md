@@ -15,12 +15,12 @@ Contents:
 
 ## Features at a glance
 
-* Pluggable engine support (PIL and pgMagick included).
+* Pluggable engine support (PIL and GraphicsMagick included).
 * Pluggable storage support (FileSystem included).
 * Flexible, simple syntax, generates no HTML.
 * Several filters available by default:
     * Cropping
-    * Grayscale/Sepia
     * Rotation
     * Blur
+    * Grayscale/Sepia
 * Easily extendable.

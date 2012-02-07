@@ -10,10 +10,8 @@ Just do
 
 ## Requirements
 
-You need to have an image library installed. MoarThumbnails ships with support for the [Python Imaging Library][pil] and [GraphicsMagick][gmi] via [pgmagick][pgmagick]. 
+You need to have an image library installed. MoarThumbnails ships with support for the [Python Imaging Library][pil] and [GraphicsMagick][gmi] via [Wand][wand]. 
 
-The GraphicsMagick based engine `moar.engines.imagemagick.Engine` by default calls `convert` and `identify` shell commands. You can change the
-paths to these tools by passing the optional parameters `convert` and `identify` respectively, to the constructor. See [Thumbnailer options](thumbnailer.html) for more details.
 
 ### Python Imaging Library installation
 
@@ -24,11 +22,11 @@ Prerequisites:
 
 Ubuntu 10.04 package installation:
 
-    sudo apt-get install libjpeg62 libjpeg62-dev zlib1g-dev
+    sudo apt-get install libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev
 
-Installing the [Python Imaging Library][pil] using pip:
+Then, install the [Python Imaging Library][pil] using pip:
 
-    pip install PIL
+    pip install pillow
 
 Watch the output for messages on what support got compiled in, you at least want to see the following:
 
@@ -36,28 +34,26 @@ Watch the output for messages on what support got compiled in, you at least want
     --- ZLIB (PNG/ZIP) support available
 
 
-### pgmagick installation
+### Wand installation
 
 Prerequisites:
 
 * GraphicsMagick
-* Boost.Python
 
 Ubuntu 10.04 prerequisites installation:
     
-    sudo apt-get install graphicsmagick libgraphicsmagick++-dev libboost-python1.40-dev
+    sudo apt-get install graphicsmagick libgraphicsmagick++-dev
 
 OSX installation of prerequisites with Homebrew:
     
-    brew install --use-clang --HEAD graphicsmagick
-    brew install boost
+    brew install graphicsmagick
 
-Installing pgmagick using pip:
+Then, install Wand using pip:
 
-    pip install pgmagick
+    pip install wand
 
 
 [pil]: http://www.pythonware.com/products/pil/
-[gmi]: http://imagemagick.com/
-[pgmagick]: http://bitbucket.org/hhatto/pgmagick/src
+[gmi]: http://www.graphicsmagick.org/
+[wand]: http://styleshare.github.com/wand/
 

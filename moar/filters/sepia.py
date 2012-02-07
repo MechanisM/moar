@@ -44,11 +44,9 @@ class SepiaFilter(object):
 
         return im
     
-    def magick(self, im, *args, **options):
+    def wand(self, im, *args, **options):
         ramp = self.get_ramp(args)
-
-        pass
-
+        raise NotImplemented
         return im
     
     def get_ramp(self, args):

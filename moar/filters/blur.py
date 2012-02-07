@@ -36,9 +36,9 @@ class BlurFilter(object):
         im = im.filter(MyGaussianBlur(radius))
         return im
     
-    def magick(self, im, *args, **options):
+    def wand(self, im, *args, **options):
         radius = self.get_radius(args)
-        im.blur(radius)
+        im.resize(blur=radius)
         return im
     
     def get_radius(self, args):

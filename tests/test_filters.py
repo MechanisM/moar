@@ -12,7 +12,7 @@ def test_pil_blur():
 
     thumb = thumbnail(source, ('blur', 20), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'blur20pil.png')
+    assert_image(name, 'blur20-pil.png')
 
     remove_thumb(name)
 
@@ -23,7 +23,7 @@ def test_pil_rotate_ccw():
 
     thumb = thumbnail(source, ('rotate', 60), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'rotate60ccw.png')
+    assert_image(name, 'rotate60ccw-pil.png')
 
     remove_thumb(name)
 
@@ -34,7 +34,7 @@ def test_pil_rotate_cw():
 
     thumb = thumbnail(source, ('rotate', -60), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'rotate60cw.png')
+    assert_image(name, 'rotate60cw-pil.png')
 
     remove_thumb(name)
 
@@ -66,42 +66,43 @@ def test_pil_filters_comp():
 
     remove_thumb(name)
 
+## ----------------------------------------------------------------------------
 
-def test_magick_blur():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.magick.Engine)
+def test_wand_blur():
+    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('blur', 20), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'blur20pil.png')
+    assert_image(name, 'blur20-wand.png')
 
     remove_thumb(name)
 
 
-def test_magick_rotate_ccw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.magick.Engine)
+def test_wand_rotate_ccw():
+    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'rotate60ccw.png')
+    assert_image(name, 'rotate60ccw-wand.png')
 
     remove_thumb(name)
 
 
-def test_magick_rotate_cw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.magick.Engine)
+def test_wand_rotate_cw():
+    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', -60), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'rotate60cw.png')
+    assert_image(name, 'rotate60cw-wand.png')
 
     remove_thumb(name)
 
 
-def test_magick_rotate_noalpha():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.magick.Engine)
+def test_wand_rotate_noalpha():
+    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='JPEG')
@@ -113,8 +114,8 @@ def test_magick_rotate_noalpha():
     remove_thumb(name)
 
 
-def test_magick_filters_comp():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.magick.Engine)
+def test_wand_filters_comp():
+    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, '150x150',
@@ -123,7 +124,7 @@ def test_magick_filters_comp():
         format='PNG'
     )
     name = thumb.key + '.png'
-    assert_image(name, 'multifilter-magick.png')
+    assert_image(name, 'multifilter-wand.png')
 
     remove_thumb(name)
 

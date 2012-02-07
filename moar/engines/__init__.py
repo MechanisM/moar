@@ -1,1 +1,1 @@
-from . import base, magick, pil
+from . import base, wand, pil

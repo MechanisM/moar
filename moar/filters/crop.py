@@ -16,10 +16,6 @@ thumbnail(source, '200x100', ('crop', 50, 50, 'center', 0) )
 thumbnail(source, '200x100', ('crop', 50, 50, 'center', 'center') )
 ```
 """
-try:
-    from pgmagick import Geometry
-except ImportError:
-    pass
 
 
 class CropFilter(object):
@@ -30,11 +26,10 @@ class CropFilter(object):
         box = (x, y, x + w, y + h)
         return im.crop(box)
     
-    def magick(self, im, *args, **options):
-        g = im.size()
-        w, h, x, y = cls.get_bounds(args, g.width(), g.height())
-        geometry = Geometry(w, h, x, y)
-        im.crop(geometry)
+    def wand(self, im, *args, **options):
+        imw, imh = im.size
+        w, h, x, y = self.get_bounds(args, imw, imh)
+        im.crop(x, y, width=w, height=h)
         return im
     
     def get_bounds(self, args, imw, imh):

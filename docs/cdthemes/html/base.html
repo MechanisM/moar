@@ -1,0 +1,42 @@
+<!DOCTYPE html public "display of awesomeness">
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>{{ title }} – {{ _meta.title }}</title>
+{% if description -%}
+<meta name="description" content="{{ description|e }}">
+{%- endif %}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+<script src="static/scripts/jquery1.7.1.min.js"></script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+<script src="/static/scripts/selectivizr.js"></script>
+<![endif]-->
+<link href="static/styles/main.css" rel="stylesheet" />
+<link href="static/styles/pygments.css" rel="stylesheet" />
+<script src="static/scripts/modernizr2.js"></script>
+{% block header %}{% endblock %}
+</head>
+<body>
+
+<nav id="nav">
+  <header>
+    <a href="/" id="logo">{{ _meta.title }}</a>
+  </header>
+  <div class="sections">
+  {{ _meta.toc|safe }}
+  </div>
+  <footer>
+    <div class="✓">{{ _powered_by|safe }}</div>
+  </footer>
+</nav>
+
+<div id="content">
+{% block content -%}{%- endblock %}
+</div>
+<!-- .content -->
+
+<script src="static/scripts/main.js"></script>
+</body>
+</html>

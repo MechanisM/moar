@@ -1,0 +1,5 @@
+* [Installation](installation.html)
+* [Quickstart](quickstart.html)
+* [Thumbnailer options](thumbnailer.html)
+* [Thumbnail generation](thumbnail.html)
+* [Extending the library](extending.html)

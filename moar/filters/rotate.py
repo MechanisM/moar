@@ -16,7 +16,10 @@ try:
     from PIL import Image
 except ImportError:
     pass
-
+try:
+    from wand.color import Color
+except ImportError:
+    pass
 
 class RotateFilter(object):
 
@@ -33,12 +36,12 @@ class RotateFilter(object):
         
         return im
     
-    def magick(self, im, *args, **options):
-        angle = self.get_angle(args)
-        # background = None
-        # if options.get('format') != 'PNG':
-        #     background = Color('#fff')
-        im.rotate(angle)
+    def wand(self, im, *args, **options):
+        angle = -self.get_angle(args)
+        background = None
+        if options.get('format') != 'PNG':
+            background = Color('#fff')
+        im.rotate(angle, background=background)
         return im
     
     def get_angle(self, args):

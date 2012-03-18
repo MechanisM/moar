@@ -4,13 +4,9 @@
 """
 from hashlib import md5
 
-from . import utils
-from .engines import pil
+from . import engines
 from .storages import filesystem
-
-
-class EngineNotAvailable(Exception):
-    pass
+from .utils import StorageDict
 
 
 INSTALL_PIL_MSG = '''Moar uses by default the Python Image Library (PIL) but
@@ -43,26 +39,27 @@ class Thumb(object):
 class Thumbnailer(object):
     """
     engine:
-        An `Engine` class. By default `moar.engines.pil.Engine`.
+        An `Engine` class. By default `moar.engines.PILEngine`.
     
     storage:
         An `Storage` class. By default `moar.storages.filesystem.Storage`.
     
     filters:
-        Dictionary of extra filters than are added to those available
-        by default.
+        Dictionary of extra filters than are added to
+        those available by default.
     
     upscale:
         A boolean that controls if the image can be upscaled or not.
-        For example if your source is `100x100` and you request a thumbnail of
-        size `200x200` and upscale is `False` this will return a thumbnail of
-        size 100x100. If upscale were `True` this would result in a thumbnail
-        size `200x200` (upscaled).
+        For example if your source is `100x100` and you request a thumbnail
+        of size `200x200` and upscale is `False` this will return a
+        thumbnail of size 100x100.
+        If upscale were `True` this would result in a thumbnail size
+        `200x200` (upscaled).
         The default value is `True`.
 
     quality:
-        When the output format is jpeg, quality is a value between 0-100 that
-        controls the thumbnail write quality.
+        When the output format is jpeg, quality is a value between 0-100
+        that controls the thumbnail write quality.
         Default value is `90`.
 
     progressive:
@@ -76,7 +73,7 @@ class Thumbnailer(object):
 
     format:
         This controls the write format and thumbnail extension. Formats 
-        supported by the shipped engines are `'JPEG'` and `'PNG'`. 
+        supported by the shipped engines are `'JPEG'` and `'PNG'`.
         Default value is `'JPEG'`.
     
     resize:
@@ -89,9 +86,7 @@ class Thumbnailer(object):
 
     def __init__(self, engine=None, storage=None, filters=None, **default_options):
         if engine is None:
-            if not pil.available:
-                raise EngineNotAvailable(INSTALL_PIL_MSG)
-            engine = pil.Engine
+            engine = engines.PILEngine
         if type(engine) == type:
             engine = engine()
         self.engine = engine
@@ -134,7 +129,7 @@ class Thumbnailer(object):
         filters = list(filters)
         
         if isinstance(source, dict):
-            source = utils.StorageDict(source)
+            source = StorageDict(source)
         
         # No geometry provided
         if isinstance(geometry, (tuple, list)):

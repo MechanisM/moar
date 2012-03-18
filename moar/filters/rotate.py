@@ -21,29 +21,28 @@ try:
 except ImportError:
     pass
 
-class RotateFilter(object):
 
-    def pil(self, im, *args, **options):
-        angle = self.get_angle(args)
-        im = im.convert('RGBA')
-        im = im.rotate(angle, resample=Image.BICUBIC, expand=True)
+def pil(im, *args, **options):
+    angle = args[0]
+    im = im.convert('RGBA')
+    im = im.rotate(angle, resample=Image.BICUBIC,
+        expand=True)
 
-        if options.get('format') != 'PNG':
-            # a white image same size as rotated image
-            fff = Image.new('RGB', im.size, (255,)*3)
-            # create a composite image using the alpha layer of im as a mask
-            im = Image.composite(im, fff, im)
-        
-        return im
+    if options.get('format') != 'PNG':
+        # a white image same size as rotated image
+        fff = Image.new('RGB', im.size, (255,)*3)
+        # create a composite image using the alpha
+        # layer of im as a mask
+        im = Image.composite(im, fff, im)
     
-    def wand(self, im, *args, **options):
-        angle = -self.get_angle(args)
-        background = None
-        if options.get('format') != 'PNG':
-            background = Color('#fff')
-        im.rotate(angle, background=background)
-        return im
-    
-    def get_angle(self, args):
-        return args[0]
+    return im
+
+
+def wand(im, *args, **options):
+    angle = - args[0]
+    background = None
+    if options.get('format') != 'PNG':
+        background = Color('#fff')
+    im.rotate(angle, background=background)
+    return im
 

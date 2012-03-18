@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 import moar
-
 from PIL import Image
 
 from .utils import *
 
 
+PILEngine = moar.engines.pil.Engine
+WandEngine = moar.engines.wand.Engine
+
+
 def test_pil_blur():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('blur', 20), format='PNG')
@@ -18,7 +21,7 @@ def test_pil_blur():
 
 
 def test_pil_rotate_ccw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='PNG')
@@ -29,7 +32,7 @@ def test_pil_rotate_ccw():
 
 
 def test_pil_rotate_cw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', -60), format='PNG')
@@ -40,7 +43,7 @@ def test_pil_rotate_cw():
 
 
 def test_pil_rotate_noalpha():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='JPEG')
@@ -53,7 +56,7 @@ def test_pil_rotate_noalpha():
 
 
 def test_pil_filters_comp():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, '150x150',
@@ -69,7 +72,7 @@ def test_pil_filters_comp():
 ## ----------------------------------------------------------------------------
 
 def test_wand_blur():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+    thumbnail = moar.Thumbnailer(engine=WandEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('blur', 20), format='PNG')
@@ -80,7 +83,7 @@ def test_wand_blur():
 
 
 def test_wand_rotate_ccw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+    thumbnail = moar.Thumbnailer(engine=WandEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='PNG')
@@ -91,7 +94,7 @@ def test_wand_rotate_ccw():
 
 
 def test_wand_rotate_cw():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+    thumbnail = moar.Thumbnailer(engine=WandEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', -60), format='PNG')
@@ -102,7 +105,7 @@ def test_wand_rotate_cw():
 
 
 def test_wand_rotate_noalpha():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+    thumbnail = moar.Thumbnailer(engine=WandEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='JPEG')
@@ -115,7 +118,7 @@ def test_wand_rotate_noalpha():
 
 
 def test_wand_filters_comp():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+    thumbnail = moar.Thumbnailer(engine=WandEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, '150x150',

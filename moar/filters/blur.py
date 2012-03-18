@@ -28,19 +28,15 @@ try:
 except ImportError:
     pass
 
+    
+def pil(im, *args, **options):
+    radius = args[0]
+    im = im.filter(MyGaussianBlur(radius))
+    return im
 
-class BlurFilter(object):
-        
-    def pil(self, im, *args, **options):
-        radius = self.get_radius(args)
-        im = im.filter(MyGaussianBlur(radius))
-        return im
-    
-    def wand(self, im, *args, **options):
-        radius = self.get_radius(args)
-        im.resize(blur=radius)
-        return im
-    
-    def get_radius(self, args):
-        return args[0]
+
+def wand(im, *args, **options):
+    radius = args[0]
+    im.resize(blur=radius)
+    return im
 

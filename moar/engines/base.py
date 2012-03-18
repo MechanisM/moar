@@ -12,14 +12,6 @@ import os
 from .. import filters as available_filters
 
 
-class FilterNotFound(Exception):
-    pass
-
-
-class FilterNotForEngine(Exception):
-    pass
-
-
 class BaseEngine(object):
     
     def process(self, thumb, custom_filters):
@@ -100,21 +92,11 @@ class BaseEngine(object):
     
     def get_filter(self, fn, custom_filters):
         f = custom_filters.get(fn)
-        try:
-            if f is None:
-                f = getattr(available_filters, fn)
-        except AttributeError:
-            raise FilterNotFound(fn)
-        
+        if f is None:
+            f = getattr(available_filters, fn)
         if inspect.isclass(f):
             f = f()
-        
-        try:
-            ff = getattr(f, self.name)
-        except AttributeError:
-            raise FilterNotForEngine(fn, self.name)
-        
-        return ff
+        return getattr(f, self.name)
     
     def load_image(self, path):
         raise NotImplementedError

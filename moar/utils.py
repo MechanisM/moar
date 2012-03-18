@@ -57,9 +57,6 @@ class StorageDict(dict):
         except KeyError, error:
             raise AttributeError(error)
     
-    def __repr__(self):
-        return '<StorageDict ' + dict.__repr__(self) + '>'
-    
     def __getstate__(self):
         return dict(self)
     
@@ -68,4 +65,7 @@ class StorageDict(dict):
             key = key.upper()
         for (key, value) in value.items():
             self[key] = value
+        
+    def __repr__(self):
+        return '<StorageDict ' + dict.__repr__(self) + '>'
 

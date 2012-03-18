@@ -5,14 +5,12 @@
 Local file system store.
 
 """
-import io
 import errno
+import io
 import os
 
-from .base import BaseStorage
 
-
-def make_dir(path):
+def make_dirs(path):
     try:
         os.makedirs(os.path.dirname(path))
     except (OSError), e:
@@ -21,7 +19,7 @@ def make_dir(path):
     return path
 
 
-class Storage(BaseStorage):
+class Storage(object):
 
     thumbsdir = 't'
     
@@ -36,7 +34,7 @@ class Storage(BaseStorage):
     def save(self, thumb, raw_data):
         name = self.get_name(thumb.key, thumb.options)
         dest = self.get_path(thumb.source, name)
-        make_dir(dest)
+        make_dirs(dest)
         with io.open(dest, 'wb') as f:
             f.write(raw_data)
         return self.get_url(thumb.source, name)
@@ -45,7 +43,8 @@ class Storage(BaseStorage):
         return '%s.%s' % (key, options['format'].lower())
     
     def get_path(self, source, name):
-        return os.path.join(source.base_path, source.path, self.thumbsdir, name)
+        return os.path.join(source.base_path, source.path,
+            self.thumbsdir, name)
     
     def get_url(self, source, name):
         return '/'.join([source.base_url, source.path, self.thumbsdir, name])

@@ -4,8 +4,12 @@ import moar
 from .utils import *
 
 
+PILEngine = moar.engines.pil.Engine
+WandEngine = moar.engines.wand.Engine
+
+
 def test_pil_sepia():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('sepia', ), format='PNG')
@@ -15,7 +19,7 @@ def test_pil_sepia():
 
 
 def test_pil_sepia_rgb():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('sepia', 240, 220, 190), format='PNG')
@@ -25,7 +29,7 @@ def test_pil_sepia_rgb():
 
 
 def test_pil_sepia_hex():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('sepia', '#ffaf2e'), format='PNG')
@@ -35,7 +39,7 @@ def test_pil_sepia_hex():
 
 
 def test_pil_grayscale():
-    thumbnail = moar.Thumbnailer(engine=moar.engines.pil.Engine)
+    thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('grayscale', ), format='PNG')
@@ -46,7 +50,7 @@ def test_pil_grayscale():
 ## ----------------------------------------------------------------------------
 
 # def test_wand_sepia():
-#     thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+#     thumbnail = moar.Thumbnailer(engine=WandEngine)
 #     source = get_source('a200x140.png')
 
 #     thumb = thumbnail(source, ('sepia', ), format='PNG')
@@ -56,7 +60,7 @@ def test_pil_grayscale():
 
 
 # def test_wand_sepia_rgb():
-#     thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+#     thumbnail = moar.Thumbnailer(engine=WandEngine)
 #     source = get_source('a200x140.png')
 
 #     thumb = thumbnail(source, ('sepia', 240, 220, 190), format='PNG')
@@ -66,7 +70,7 @@ def test_pil_grayscale():
 
 
 # def test_wand_sepia_hex():
-#     thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+#     thumbnail = moar.Thumbnailer(engine=WandEngine)
 #     source = get_source('a200x140.png')
 
 #     thumb = thumbnail(source, ('sepia', '#ffaf2e'), format='PNG')
@@ -76,7 +80,7 @@ def test_pil_grayscale():
 
 
 # def test_wand_grayscale():
-#     thumbnail = moar.Thumbnailer(engine=moar.engines.wand.Engine)
+#     thumbnail = moar.Thumbnailer(engine=WandEngine)
 #     source = get_source('a200x140.png')
 
 #     thumb = thumbnail(source, ('grayscale', ), format='PNG')

@@ -57,14 +57,14 @@ def get_requirements():
 
 
 setup(
-    name = 'MoarThumbnails',
+    name = 'Moar',
     version = get_version(),
     author = 'Juan-Pablo Scaletti',
     author_email = 'juanpablo@lucumalabs.com',
     packages = [PACKAGE],
     package_data = find_packages_data(PACKAGE, 'tests'),
     zip_safe = False,
-    url = 'http://github.com/lucuma/MOAR-Thumbnails',
+    url = 'http://github.com/lucuma/Moar',
     license = 'MIT license (http://www.opensource.org/licenses/mit-license.php)',
     description = 'Easy thumbnails for everyone.',
     long_description = read_from(get_path('README.rst')),

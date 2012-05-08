@@ -9,7 +9,7 @@
 <body>
 <header>
   <div class="wrap">
-    <h1><a href="">Moar&nbsp;thumbnails</a></h1>
+    <h1><a href="">Moar thumbnails <small>v. 0.3</small></a></h1>
   </div>
 </header>
 
@@ -27,7 +27,8 @@
 <h2 id="source"><a class="toclink" href="#source">Source</a></h2>
 <p>Source must be a local image represented as an object or a dictionary with the following attributes or&nbsp;keys:</p>
 <ul>
-<li><strong>base_path</strong>: absolute path to the container of the images. Eg: <code>/var/www/media/</code></li>
+<li><strong>base_path</strong>: absolute path to the container of the images.<br>
+    Eg: <code>/var/example.com/media/</code></li>
 <li><strong>base_url</strong>: <span class="caps">URL</span> to the container of the images. Eg: <code>/media/</code></li>
 <li><strong>path</strong>: the path to the image relative to <code>base_path</code>. Eg: <code>2012/01/09/</code>.</li>
 <li><strong>name</strong>: the filename of the&nbsp;image.</li>
@@ -54,17 +55,17 @@ Width and height are in&nbsp;pixels. </p>
 <h3 id="crop-width-height-x0-y0"><a class="toclink" href="#crop-width-height-x0-y0">crop (width, height, x=0,&nbsp;y=0)</a></h3>
 <p>Crop accepts a width, height and one or two optional values as the coordinates of the new top-left corner (<code>(0, 0)</code> by default). These last values can be integers (pixels), percentages or&nbsp;&#8216;center&#8217;.</p>
 <p>For example, some valid values&nbsp;are:</p>
-<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;15%&#39;</span><span class="p">,</span> <span class="s">&#39;10%&#39;</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">)</span> <span class="p">)</span>
+<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;15%&#39;</span><span class="p">,</span> <span class="s">&#39;10%&#39;</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;crop&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="s">&#39;center&#39;</span><span class="p">))</span>
 </pre></div>
 </p>
 <h3 id="grayscale"><a class="toclink" href="#grayscale">grayscale</a></h3>
 <p>If you include this filter (the value doesn&#8217;t matter) it will turn the image into&nbsp;gray-scale.</p>
 <p>Example:</p>
-<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;grayscale&#39;</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
+<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;grayscale&#39;</span><span class="p">,</span> <span class="p">))</span>
 </pre></div>
 </p>
 <h3 id="sepia-tonefff0c0"><a class="toclink" href="#sepia-tonefff0c0">sepia&nbsp;(tone=&#8217;#fff0c0&#8217;)</a></h3>
@@ -72,22 +73,22 @@ Width and height are in&nbsp;pixels. </p>
 <p>The interesting trick about sepia images is that they are just gray-scale pictures with a different color palette. In this case the default sepia tone is&nbsp;#fff0c0.</p>
 <p>If you would want to change it, the tone can be expressed as a <span class="caps">RGB</span> list of values or like an hex&nbsp;string.</p>
 <p>Examples:</p>
-<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">192</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="s">&#39;#fff0c0&#39;</span><span class="p">)</span> <span class="p">)</span>
+<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">192</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;sepia&#39;</span><span class="p">,</span> <span class="s">&#39;#fff0c0&#39;</span><span class="p">))</span>
 </pre></div>
 </p>
 <h3 id="rotate-degrees"><a class="toclink" href="#rotate-degrees">rotate&nbsp;(degrees)</a></h3>
 <p>Rotates the image counter-clockwise by a specified number of degrees. If degrees is negative, the rotation it&#8217;s clockwise&nbsp;instead.</p>
 <p>Example:</p>
-<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span> <span class="p">)</span>
+<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
+<span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;rotate&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">))</span>
 </pre></div>
 </p>
 <h3 id="blur-radius2"><a class="toclink" href="#blur-radius2">blur&nbsp;(radius=2)</a></h3>
 <p>Apply a gaussian blur (smoothing) to the image. The <code>radius</code> argument determines the scale of fine detail that will be removed. Low values remove only very fine detail while high values remove larger levels of&nbsp;detail.</p>
 <p>Example:</p>
-<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;blur&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
+<p><div class="highlight python"><pre><span class="n">thumbnail</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s">&#39;200x100&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s">&#39;blur&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </p>
 <h2 id="options"><a class="toclink" href="#options">Options</a></h2>
@@ -132,8 +133,8 @@ Width and height are in&nbsp;pixels. </p>
   </nav>
 
   <footer>
-  <p class="copy">© Copyright 2012, Lúcuma labs, by Juan-Pablo Scaletti.
-  Created using <a href="http://lucuma.github.com/Clay/" target="_blank">Clay</a>.</p>
+  <p class="copy">© Copyright 2012, Lúcuma labs. Developed by Juan-Pablo Scaletti.<br>
+    Created using <a href="http://lucuma.github.com/Clay/" target="_blank">Clay</a>.</p>
   </footer>
 </div>
 <!-- #content -->

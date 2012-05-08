@@ -1,7 +1,6 @@
 title: Thumbnailer class
 template: post.html
 
-
 # Thumbnailer class
 
 Syntax:

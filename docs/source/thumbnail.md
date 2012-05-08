@@ -21,7 +21,8 @@ The `thumbnail` function takes a source image, a geometry parameter, a number of
 
 Source must be a local image represented as an object or a dictionary with the following attributes or keys:
 
-* **base_path**: absolute path to the container of the images. Eg: `/var/www/media/`
+* **base_path**: absolute path to the container of the images.
+    Eg: `/var/example.com/media/`
 * **base_url**: URL to the container of the images. Eg: `/media/`
 * **path**: the path to the image relative to `base_path`. Eg: `2012/01/09/`.
 * **name**: the filename of the image.
@@ -66,11 +67,11 @@ Crop accepts a width, height and one or two optional values as the coordinates o
 For example, some valid values are:
 
 ```python
-thumbnail(source, '200x100', ('crop', 50, 50) )
-thumbnail(source, '200x100', ('crop', 50, 50, '15%', '10%') )
-thumbnail(source, '200x100', ('crop', 50, 50, 150, 50) )
-thumbnail(source, '200x100', ('crop', 50, 50, 'center', 0) )
-thumbnail(source, '200x100', ('crop', 50, 50, 'center', 'center') )
+thumbnail(source, '200x100', ('crop', 50, 50))
+thumbnail(source, '200x100', ('crop', 50, 50, '15%', '10%'))
+thumbnail(source, '200x100', ('crop', 50, 50, 150, 50))
+thumbnail(source, '200x100', ('crop', 50, 50, 'center', 0))
+thumbnail(source, '200x100', ('crop', 50, 50, 'center', 'center'))
 ```
 
 ### grayscale
@@ -80,7 +81,7 @@ If you include this filter (the value doesn't matter) it will turn the image int
 Example:
 
 ```python
-thumbnail(source, '200x100', ('grayscale', ) )
+thumbnail(source, '200x100', ('grayscale', ))
 ```
 
 ### sepia (tone='#fff0c0')
@@ -94,9 +95,9 @@ If you would want to change it, the tone can be expressed as a RGB list of value
 Examples:
 
 ```python
-thumbnail(source, '200x100', ('sepia', ) )
-thumbnail(source, '200x100', ('sepia', 255, 240, 192) )
-thumbnail(source, '200x100', ('sepia', '#fff0c0') )
+thumbnail(source, '200x100', ('sepia', ))
+thumbnail(source, '200x100', ('sepia', 255, 240, 192))
+thumbnail(source, '200x100', ('sepia', '#fff0c0'))
 ```
 
 ### rotate (degrees)
@@ -106,8 +107,8 @@ Rotates the image counter-clockwise by a specified number of degrees. If degrees
 Example:
 
 ```python
-thumbnail(source, '200x100', ('rotate', 45) )
-thumbnail(source, '200x100', ('rotate', -90) )
+thumbnail(source, '200x100', ('rotate', 45))
+thumbnail(source, '200x100', ('rotate', -90))
 ```
 
 ### blur (radius=2)
@@ -117,7 +118,7 @@ Apply a gaussian blur (smoothing) to the image. The `radius` argument determines
 Example:
 
 ```python
-thumbnail(source, '200x100', ('blur', 4) )
+thumbnail(source, '200x100', ('blur', 4))
 ```
 
 

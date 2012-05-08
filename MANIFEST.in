@@ -1,2 +1,3 @@
 include *.py *.txt *.md *.rst Makefile
 recursive-include moar *
+recursive-include tests *

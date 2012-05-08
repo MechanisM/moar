@@ -1,0 +1,4 @@
+include *.py *.txt *.md *.rst Makefile
+recursive-include clay *
+recursive-include docs *
+recursive-include tests *

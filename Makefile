@@ -16,6 +16,7 @@ upload:
 	rm -rf dist
 	rm -rf *.egg-info
 	rm -rf tests/__pycache__
+	cd docs; clay build; cd ..
 	find . -name "*.pyc" -exec rm -rf {} \;
 	find . -name '*.pyo' -exec rm -f {} +
 	find . -name '*~' -exec rm -f {} +

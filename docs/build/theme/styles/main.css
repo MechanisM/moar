@@ -434,8 +434,8 @@ dd {
 ******************************************************************************/
 
 p {
-  margin: 0 0 0.81em;
-  line-height: 1.62em;
+  margin: 4px 0 10px;
+  line-height: 1.5;
 }
 p small {
   font-size: 12px;
@@ -881,6 +881,16 @@ footer {
   margin: 80px 0 40px;
   clear: both;
   font-size: 16px;
+}
+
+#forkme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  width: 149px;
+  height: 149px;
+  background: transparent url(../images/forkme_right_red.png) no-repeat 0 0;
 }
 
 /******************************************************************************

@@ -2,7 +2,7 @@
 
 all: clean clean-pyc test
 
-clean:
+clean: clean-pyc
 	rm -rf build
 	rm -rf dist
 	rm -rf *.egg-info

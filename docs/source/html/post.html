@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
 <title>{% block title %}{% endblock %}</title>
-<link href="/theme/styles/main.css" rel="stylesheet" />
+<link href="/{{ THEME_PREFIX }}/styles/main.css" rel="stylesheet" />
 </head>
 <body>
 {% include THEME_PREFIX + 'header.html' %}
@@ -38,6 +38,6 @@
 <!-- #content -->
 
 <a href="https://github.com/lucuma/Moar" id="forkme" title="Fork me on GitHub"></a>
-<script src="/theme/scripts/main.js"></script>
+<script src="/{{ THEME_PREFIX }}/scripts/main.js"></script>
 </body>
 </html>

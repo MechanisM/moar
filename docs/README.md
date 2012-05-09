@@ -1,7 +1,7 @@
 
 # Documentation
 
-This documentation was generated using [Clay] (http://lucuma.github.com/Clay/). The sources are in the `sources` dir, and the html version is in `build`.
+This documentation was generated using [Clay] (http://lucuma.github.com/Clay/). The sources are in the `sources` dir, and the html version is in `build/html`.
 
 ## Instructions
 

@@ -1,0 +1,3 @@
+[submodule "_page"]
+	path = _page
+	url = git@github.com:lucuma/moar.git

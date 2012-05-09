@@ -568,9 +568,10 @@ header h1 a:hover {
 }
 
 footer {
-  margin: 80px 0 40px;
+  margin: 90px 0 40px;
   clear: both;
-  font-size: 16px;
+  font-size: 15px;
+  color: rgb(150, 150, 150);
 }
 
 #forkme {

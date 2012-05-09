@@ -23,4 +23,6 @@ upload: clean clean-pyc
 
 docs:
 	cd docs; rm -rf build; clay build
-	cp -r docs/build/html/* _page
+	cp -r docs/build/html/* _pages
+	cd _pages; git add .; git commit -m "Update pages"; git push origin gh-pages
+	git add _pages; git commit -m "Update pages"; git push origin master

@@ -1,5 +1,5 @@
 title: Moar documentation
-template: post.html
+template: page.html
 
 
 # Moar thumbnails

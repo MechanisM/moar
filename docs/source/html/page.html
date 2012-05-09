@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>{% block title %}{% endblock %}</title>
+<title>{% block title %}Moar thumbnails{% endblock %}</title>
 <link href="/{{ THEME_PREFIX }}/styles/main.css" rel="stylesheet" />
 </head>
 <body>
@@ -15,11 +15,6 @@
   </section>
 
   <nav id="sidebar">
-    <p>
-    <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=lucuma&amp;repo=moar&amp;type=watch&amp;count=true&amp;size=large"
-      allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-    </p>
-
     <div class="main-toc">
     <h1 class="toc-title">Table of contents</h1>
     {% include 'main_toc.md' %}
@@ -28,6 +23,11 @@
     <div class="page-toc">
     {% block toc %}{% endblock %}
     </div>
+
+    <p id="ghwatch">
+    <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=lucuma&amp;repo=moar&amp;type=watch&amp;count=true&amp;size=large"
+      allowtransparency="true" frameborder="0" scrolling="0" width="150px" height="35px"></iframe>
+    </p>
   </nav>
 
   <footer>
@@ -37,7 +37,7 @@
 </div>
 <!-- #content -->
 
-<a href="https://github.com/lucuma/Moar" id="forkme" title="Fork me on GitHub"></a>
+<!--a href="https://github.com/lucuma/moar" id="forkme" title="Fork me on GitHub"></a-->
 <script src="/{{ THEME_PREFIX }}/scripts/main.js"></script>
 </body>
 </html>

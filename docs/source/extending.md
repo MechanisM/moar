@@ -1,5 +1,5 @@
 title: Extending the library
-template: post.html
+template: page.html
 
 # Extending the library
 

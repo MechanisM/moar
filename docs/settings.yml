@@ -29,3 +29,7 @@ post_processors:
 
 theme_prefix: html
 
+## Constants
+github_url: https://github.com/lucuma/moar
+version: 0.3
+

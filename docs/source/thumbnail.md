@@ -1,5 +1,5 @@
 title: Thumbnail generation
-template: post.html
+template: page.html
 
 
 # Thumbnail generation

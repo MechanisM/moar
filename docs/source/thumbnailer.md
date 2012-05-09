@@ -1,5 +1,5 @@
 title: Thumbnailer class
-template: post.html
+template: page.html
 
 # Thumbnailer class
 

@@ -1,5 +1,5 @@
 title: Installation
-template: post.html
+template: page.html
 description: Installation of Moar
 
 

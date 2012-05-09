@@ -1,5 +1,5 @@
 title: Quick start
-template: post.html
+template: page.html
 
 
 # Quick start

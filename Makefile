@@ -23,3 +23,4 @@ upload: clean clean-pyc
 
 docs:
 	cd docs; rm -rf build; clay build
+	cp -r docs/build/html/* _page

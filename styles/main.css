@@ -658,16 +658,6 @@ footer {
   color: rgb(150, 150, 150);
 }
 
-#forkme {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0;
-  width: 149px;
-  height: 149px;
-  background: transparent url(../images/forkme_right_red.png) no-repeat 0 0;
-}
-
 /******************************************************************************
 * toc
 ******************************************************************************/

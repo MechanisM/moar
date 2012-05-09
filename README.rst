@@ -5,7 +5,7 @@ Moar is an MIT Licensed library, written in Python, that allows you to make cust
 
 
 See the documentation online at http://lucuma.github.com/moar/
-or in _docs/build/html/index.html: https://github.com/lucuma/moar/docs/source/ .
+or in _docs/source: https://github.com/lucuma/moar/docs/source/ .
 
 
 Features at a glance

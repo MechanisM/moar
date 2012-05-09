@@ -6,6 +6,7 @@ clean: clean-pyc
 	rm -rf build
 	rm -rf dist
 	rm -rf *.egg-info
+	rm -rf tests/res/t
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -13,6 +14,7 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 test:
+	rm -rf tests/res/t
 	python runtests.py
 	rm -rf tests/__pycache__
 

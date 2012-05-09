@@ -7,3 +7,4 @@ _build
 dist
 *.egg-info
 Vagrantfile
+tests/res/t/*

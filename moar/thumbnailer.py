@@ -3,8 +3,10 @@
 
 """
 from hashlib import md5
+import sys
 
-from . import engines
+from .engines.pil import Engine as PILEngine
+from .engines.pil import available as pil_available
 from .storages import filesystem
 from .utils import StorageDict
 
@@ -84,9 +86,10 @@ class Thumbnailer(object):
         Default value is `False`.
     """
 
-    def __init__(self, engine=None, storage=None, filters=None, **default_options):
-        if engine is None:
-            engine = engines.PILEngine
+    def __init__(self, engine=PILEngine, storage=None, filters=None, **default_options):
+        if not pil_available and engine == PILEngine:
+            print INSTALL_PIL_MSG
+            sys.exit(1)
         if type(engine) == type:
             engine = engine()
         self.engine = engine

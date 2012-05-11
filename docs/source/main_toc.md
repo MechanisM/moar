@@ -1,6 +1,6 @@
 * [About](/index.md)
 * [Installation](/installation.md)
 * [Quickstart](/quickstart.md)
-* [The 'thumbnail' function](/thumbnail.md)
+* [The "thumbnail" function](/thumbnail.md)
 * [Thumbnailer options](/thumbnailer.md)
 * [Extending the library](/extending.md)

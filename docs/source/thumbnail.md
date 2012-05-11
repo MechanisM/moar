@@ -2,7 +2,7 @@ title: Thumbnail generation
 template: page.html
 
 
-# The 'thumbnail' function
+# The "thumbnail" function
 
 Syntax:
 

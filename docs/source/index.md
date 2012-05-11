@@ -7,7 +7,7 @@ index: 1
 
 **Welcome to Moar!**
 
-Moar is an MIT Licensed library, written in Python, that allows you to make custom thumbnails wherever you need them.
+Moar is an MIT Licensed library, written in Python, that allows you to make custom thumbnails whenever you need them in your application.
 
 ```jinja
 <img src="{{ thumbnail(source, '200x100', ['crop', 50, 50]) }}" />

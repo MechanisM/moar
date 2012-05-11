@@ -25,6 +25,7 @@ class Engine(BaseEngine):
     
     def close_image(self, im):
         im.close()
+        return im
     
     def get_data(self, im, options):
         format = options['format']

@@ -2,7 +2,7 @@
 import io
 import os
 
-from PIL import Image
+from PIL import Image, ImageChops
 
 
 __all__ = [
@@ -22,8 +22,6 @@ PATH = 'res'
 
 THUMBSDIR = 't'
 CONTROLDIR = 'c'
-
-TOLERANCE = 1
 
 
 def get_cpath(name):
@@ -45,25 +43,15 @@ def assert_image(test, control, assert_equal=True):
     tp = get_tpath(test)
     cp = get_cpath(control)
 
-    test_data = list(Image.open(tp).getdata())
-    control_data = list(Image.open(cp).getdata())
-
-    equal = True
-    for i in range(len(test_data)):
-        if isinstance(test_data[i], int):
-            if abs(test_data[i] - control_data[i]) > TOLERANCE:
-                equal = False
-                break
-        else:
-            rt, gt, bt, at = test_data[i]
-            rc, gc, bc, ac = control_data[i]
-            dr = abs(rt - rc) > TOLERANCE
-            dg = abs(gt - gc) > TOLERANCE
-            db = abs(bt - bc) > TOLERANCE
-            da = abs(at - ac) > TOLERANCE
-            if dr or dg or db or da:
-                equal = False
-                break
+    test_image = Image.open(tp).convert('RGB')
+    control_image = Image.open(cp).convert('RGB')
+    try:
+        diff = ImageChops.difference(test_image, control_image).getbbox()
+        print diff
+        equal = (diff is None)
+    except ValueError, e:
+        print e
+        equal = False
     
     if assert_equal:
         assert equal

@@ -27,7 +27,7 @@ Ubuntu 10.04 package installation:
 
 Then, install the [Python Imaging Library][pil]{:target=_blank} using pip:
 
-    pip install pillow
+    pip install pil
 
 Watch the output for messages on what support got compiled in, you at least want to see the following:
 

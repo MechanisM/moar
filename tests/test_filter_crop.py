@@ -14,7 +14,7 @@ def test_pil_crop():
 
     thumb = thumbnail(source, ('crop', 50, 90), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x90.png')
+    assert_image(name, 'crop50x90-pil.png')
     remove_thumb(name)
 
 
@@ -24,7 +24,7 @@ def test_pil_crop_xy_px():
 
     thumb = thumbnail(source, ('crop', 50, 50, 100, 20), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-100|20.png')
+    assert_image(name, 'crop50x50-100|20-pil.png')
     remove_thumb(name)
 
 
@@ -34,7 +34,7 @@ def test_pil_crop_xy_short():
 
     thumb = thumbnail(source, ('crop', 50, 50, 70), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-70.png')
+    assert_image(name, 'crop50x50-70-pil.png')
     remove_thumb(name)
 
 
@@ -44,7 +44,7 @@ def test_pil_crop_xy_pc():
 
     thumb = thumbnail(source, ('crop', 50, 50, '30%', '50%'), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-30pc|50pc.png')
+    assert_image(name, 'crop50x50-30pc|50pc-pil.png')
     remove_thumb(name)
 
 
@@ -54,7 +54,7 @@ def test_pil_crop_xy_center():
 
     thumb = thumbnail(source, ('crop', 50, 50, 'center'), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-center.png')
+    assert_image(name, 'crop50x50-center-pil.png')
     remove_thumb(name)
 
 
@@ -74,7 +74,7 @@ def test_pil_crop_xy_overflow_wh():
 
     thumb = thumbnail(source, ('crop', 500, 500), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop500x500.png')
+    assert_image(name, 'crop500x500-pil.png')
     remove_thumb(name)
 
 ## --------------------------------------------------------------------------
@@ -85,7 +85,7 @@ def test_wand_crop():
 
     thumb = thumbnail(source, ('crop', 50, 90), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x90.png')
+    assert_image(name, 'crop50x90-wand.png')
     remove_thumb(name)
 
 
@@ -95,7 +95,7 @@ def test_wand_crop_xy_px():
 
     thumb = thumbnail(source, ('crop', 50, 50, 100, 20), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-100|20.png')
+    assert_image(name, 'crop50x50-100|20-wand.png')
     remove_thumb(name)
 
 
@@ -105,7 +105,7 @@ def test_wand_crop_xy_short():
 
     thumb = thumbnail(source, ('crop', 50, 50, 70), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-70.png')
+    assert_image(name, 'crop50x50-70-wand.png')
     remove_thumb(name)
 
 
@@ -115,7 +115,7 @@ def test_wand_crop_xy_pc():
 
     thumb = thumbnail(source, ('crop', 50, 50, '30%', '50%'), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-30pc|50pc.png')
+    assert_image(name, 'crop50x50-30pc|50pc-wand.png')
     remove_thumb(name)
 
 
@@ -125,7 +125,7 @@ def test_wand_crop_xy_center():
 
     thumb = thumbnail(source, ('crop', 50, 50, 'center'), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop50x50-center.png')
+    assert_image(name, 'crop50x50-center-wand.png')
     remove_thumb(name)
 
 
@@ -145,6 +145,6 @@ def test_wand_crop_xy_overflow_wh():
 
     thumb = thumbnail(source, ('crop', 500, 500), format='PNG')
     name = thumb.key + '.png'
-    assert_image(name, 'crop500x500.png')
+    assert_image(name, 'crop500x500-wand.png')
     remove_thumb(name)
 

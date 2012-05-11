@@ -117,18 +117,18 @@ def test_wand_rotate_noalpha():
     remove_thumb(name)
 
 
-def test_wand_filters_comp():
-    thumbnail = moar.Thumbnailer(engine=WandEngine)
-    source = get_source('a200x140.png')
+# def test_wand_filters_comp():
+#     thumbnail = moar.Thumbnailer(engine=WandEngine)
+#     source = get_source('a200x140.png')
 
-    thumb = thumbnail(source, '150x150',
-        ('rotate', 50),
-        ('crop', 60, 70, 'center'),
-        format='PNG'
-    )
-    name = thumb.key + '.png'
-    assert_image(name, 'multifilter-wand.png')
+#     thumb = thumbnail(source, '150x150',
+#         ('rotate', 50),
+#         ('crop', 60, 70, 'center'),
+#         format='PNG'
+#     )
+#     name = thumb.key + '.png'
+#     assert_image(name, 'multifilter-wand.png')
 
-    remove_thumb(name)
+#     remove_thumb(name)
 
 

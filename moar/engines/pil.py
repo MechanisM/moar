@@ -5,14 +5,12 @@
 PIL engine.
 
 """
+from os.path import dirname, join
 from StringIO import StringIO
 
 available = True
 try:
-    try:
-        from PIL import Image, ImageFile
-    except ImportError:
-        import Image, ImageFile
+    from PIL import Image, ImageFile, ImageCms
 except ImportError:
     available = False
 
@@ -24,7 +22,11 @@ class Engine(BaseEngine):
     name = 'pil'
     
     def load_image(self, path):
-        return Image.open(path)
+        im = Image.open(path)
+        if im.mode.startswith('RGB'):
+            sRGB = ImageCms.createProfile('sRGB')
+            im = ImageCms.profileToProfile(im, self.RGB, sRGB, 0, 'RGB')
+        return im
     
     def get_data(self, im, options):
         ImageFile.MAXBLOCK = 1024 * 1024

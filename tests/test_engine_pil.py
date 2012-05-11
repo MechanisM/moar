@@ -13,7 +13,7 @@ def test_load_image():
     
     thumb = thumbnail(source, format='PNG')
     name1 = thumb.key + '.png'
-    assert_image(name1, 'default.png')
+    assert_image(name1, 'default-pil.png')
     assert thumb.url == str(thumb)
     
     thumb2 = thumbnail(source, format='PNG')

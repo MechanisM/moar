@@ -25,7 +25,7 @@ Finally, you call it from your templates:
 ```
 
 The thumbnailer function expects at least two parameters:
-    * A `source` object. It must have at least a `fullpath` attribute.
+    * A `source` object or dictionary with, at least, the `path` and `url` attributes/keys.
     * A `geometry` parameter with the desired width and/or height of the image thumbnail.
 
 

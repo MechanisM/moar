@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<title>{% block title %}Moar thumbnails{% endblock %}</title>
+<title>{% block title %}{% endblock %}{% if not index %} | Moar thumbnails{% endif%}</title>
 <link href="/{{ THEME_PREFIX }}/styles/main.css" rel="stylesheet" />
 </head>
 <body>

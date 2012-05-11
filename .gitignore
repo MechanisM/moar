@@ -1,10 +1,33 @@
-*.pyc
+## Editor/IDE files
+\#.#
+*/.#*
+\#*
+.#*
+*~
+
+## OS specific files
 .DS_Store
-._*
-.~*#
-*.orig
-_build
-dist
+*.log
+*.pot
+*.py[co]
+
+## Packages
+env
+*.egg
 *.egg-info
-Vagrantfile
-tests/res/t/*
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+## Installer logs
+pip-log.txt
+
+## Unit test / coverage reports
+.coverage
+.tox

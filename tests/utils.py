@@ -8,8 +8,7 @@ from PIL import Image
 __all__ = [
     'get_cpath',
     'get_tpath',
-    'get_source',
-    'get_url',
+    'get_source',''
     'assert_exists',
     'assert_image',
     'assert_size',
@@ -37,15 +36,9 @@ def get_tpath(name):
 
 def get_source(name):
     return {
-        'base_path': BASE_PATH,
-        'base_url': BASE_URL,
-        'path': PATH,
-        'name': name,
+        'path': os.path.join(BASE_PATH, PATH, name),
+        'url': '/'.join([BASE_URL, PATH, name]),
     }
-
-
-def get_url(name):
-    return '/'.join([BASE_URL, PATH, THUMBSDIR, name])
 
 
 def assert_image(test, control, assert_equal=True):

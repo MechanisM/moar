@@ -18,7 +18,7 @@ test:
 	python runtests.py
 	rm -rf tests/__pycache__
 
-upload: clean clean-pyc
+upload: clean
 	python setup.py sdist upload
 
 docs:

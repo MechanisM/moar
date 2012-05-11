@@ -74,7 +74,7 @@ class BaseEngine(object):
         return im
     
     def get_source_path(self, source):
-        return os.path.join(source['base_path'], source['path'], source['name'])
+        return source.path
     
     def apply_filters(self, im, filters, custom_filters, options):
         for f in filters:

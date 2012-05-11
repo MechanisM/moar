@@ -8,6 +8,7 @@ Local file system store.
 import errno
 import io
 import os
+import urlparse
 
 
 def make_dirs(path):
@@ -43,9 +44,14 @@ class Storage(object):
         return '%s.%s' % (key, options['format'].lower())
     
     def get_path(self, source, name):
-        return os.path.join(source.base_path, source.path,
-            self.thumbsdir, name)
+        path = os.path.dirname(source.path)
+        return os.path.join(path, self.thumbsdir, name)
     
     def get_url(self, source, name):
-        return '/'.join([source.base_url, source.path, self.thumbsdir, name])
+        parsed = urlparse.urlsplit(source.url)
+        path, _ = parsed.path.rsplit('/', 1)
+        new_path = '/'.join([path, self.thumbsdir, name])
+        new_parsed = (parsed.scheme, parsed.netloc, new_path, parsed.query,
+            parsed.fragment)
+        return urlparse.urlunsplit(new_parsed)
 

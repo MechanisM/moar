@@ -24,3 +24,8 @@ or in [docs/source](https://github.com/lucuma/moar/tree/master/docs/source).
     * Grayscale/Sepia
 * Easily extendable.
 
+
+---------------------------------------
+[MIT License] (http://www.opensource.org/licenses/mit-license.php).
+Copyright © 2011 by [Lúcuma labs] (http://lucumalabs.com).  
+See `AUTHORS.md` for more details.

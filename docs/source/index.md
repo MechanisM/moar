@@ -1,5 +1,6 @@
-title: Moar documentation
+title: Moar thumbnails documentation
 template: page.html
+index: 1
 
 
 # Moar thumbnails
@@ -9,7 +10,7 @@ template: page.html
 Moar is an MIT Licensed library, written in Python, that allows you to make custom thumbnails wherever you need them.
 
 ```jinja
-<img src="{{ thumbnail(source, '200x100', ('crop', 50, 50)) }}" />
+<img src="{{ thumbnail(source, '200x100', ['crop', 50, 50]) }}" />
 ```
 
 

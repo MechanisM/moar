@@ -10,7 +10,7 @@ from StringIO import StringIO
 
 available = True
 try:
-    from PIL import Image, ImageFile, ImageCms
+    from PIL import Image, ImageFile
 except ImportError:
     available = False
 
@@ -23,9 +23,6 @@ class Engine(BaseEngine):
     
     def load_image(self, path):
         im = Image.open(path)
-        if im.mode.startswith('RGB'):
-            sRGB = ImageCms.createProfile('sRGB')
-            im = ImageCms.profileToProfile(im, self.RGB, sRGB, 0, 'RGB')
         return im
     
     def get_data(self, im, options):

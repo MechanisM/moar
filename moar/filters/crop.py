@@ -20,19 +20,19 @@ thumbnail(source, '200x100', ('crop', 50, 50, 'center', 'center') )
 
 def pil(im, *args, **options):
     imw, imh = im.size
-    w, h, x, y = get_bounds(args, imw, imh)
-    box = (x, y, x + w, y + h)
+    box = get_box(args, imw, imh)
     return im.crop(box)
 
 
 def wand(im, *args, **options):
     imw, imh = im.size
-    w, h, x, y = get_bounds(args, imw, imh)
-    im.crop(x, y, width=w, height=h)
+    box = get_box(args, imw, imh)
+    im = im.clone() # Bugfix
+    im.crop(*box)
     return im
 
 
-def get_bounds(args, imw, imh):
+def get_box(args, imw, imh):
     args = list(args)
 
     if (len(args) == 3):
@@ -44,27 +44,25 @@ def get_bounds(args, imw, imh):
     x = args[2]
     y = args[3]
 
-    if not isinstance(x, basestring):
-        x = int(x)
-    elif x.endswith('%'):
-        x = imw * int(x[:-1]) / 100
-    elif x == 'center':
-        x = (imw - width) / 2
-    elif x.endswith('px'):
-        x = int(x[:-2])
-    else:
-        x = int(x)
+    if isinstance(x, basestring):
+        if x.endswith('%'):
+            x = imw * int(x[:-1]) / 100
+        elif x == 'center':
+            x = (imw - width) / 2
+        elif x.endswith('px'):
+            x = x[:-2]
 
-    if not isinstance(y, basestring):
-        y = int(y)
-    elif y.endswith('%'):
-        y = imh * int(y[:-1]) / 100
-    elif y == 'center':
-        y = (imh - height) / 2
-    elif y.endswith('px'):
-        y = int(y[:-2])
-    else:
-        y = int(y)
+    x = int(x)
+
+    if isinstance(y, basestring):
+        if y.endswith('%'):
+            y = int(imh * int(y[:-1]) / 100)
+        elif y == 'center':
+            y = (imh - height) / 2
+        elif y.endswith('px'):
+            y = int(y[:-2])
+    
+    y = int(y)
     
     # Do not overflow
     if width + x > imw:
@@ -72,5 +70,5 @@ def get_bounds(args, imw, imh):
     if height + y > imh:
         height = imh - y
     
-    return (width, height, x, y)
+    return (x, y, x + width, y + height)
 

@@ -47,8 +47,8 @@ def assert_image(test, control, assert_equal=True):
     control_image = Image.open(cp).convert('RGB')
     try:
         diff = ImageChops.difference(test_image, control_image).getbbox()
-        print diff
-        equal = (diff is None)
+        print 'DIFF:', diff
+        equal = diff is None
     except ValueError, e:
         print e
         equal = False

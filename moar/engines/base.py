@@ -8,19 +8,11 @@ Base engine
 import inspect
 from math import ceil
 import os
-from os.path import dirname, join, abspath
 
 from .. import filters as available_filters
 
 
-ICC_ROOT = abspath(join(dirname(__file__), '..', 'icc'))
-
-
 class BaseEngine(object):
-
-    RGB = join(ICC_ROOT, 'AdobeRGB-1998.icc')
-    sRGB = join(ICC_ROOT, 'sRGB-IEC61966-2-1.icc')
-    CYMK = join(ICC_ROOT, 'CMYK-SWOP2.icc')
     
     def process(self, thumb, custom_filters):
         options = thumb.options
@@ -86,16 +78,10 @@ class BaseEngine(object):
     
     def apply_filters(self, im, filters, custom_filters, options):
         for f in filters:
-            if isinstance(f, basestring):
-                fn = f
-                args = []
-            else:
-                fn = f[0]
-                args = f[1:]
-            
-            ff = self.get_filter(fn, custom_filters)
+            fname = f[0]
+            args = f[1:]
+            ff = self.get_filter(fname, custom_filters)
             im = ff(im, *args, **options)
-        
         return im
     
     def get_filter(self, fn, custom_filters):

@@ -24,7 +24,7 @@ Moar is an MIT Licensed library, written in Python, that allows you to make cust
 * Several filters available by default:
     * Cropping
     * Rotation <sup>*</sup>
-    * Blur <sup>*</sup>
+    * Blur
     * Grayscale/Sepia <sup>*</sup>
 * Easily extendable.
 
@@ -33,5 +33,5 @@ Moar is an MIT Licensed library, written in Python, that allows you to make cust
 [gmi]: http://www.graphicsmagick.org/
 
 <div class="warning" markdown="1">
-<sup>*</sup> Currently the support for GraphicsMagick is limited to resizing and/or cropping.
+<sup>*</sup> Currently the support for GraphicsMagick is limited to resizing, cropping and/or blurring. Rotation works but not in combination with cropping.
 </div>

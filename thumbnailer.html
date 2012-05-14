@@ -10,7 +10,7 @@
 <header>
   <div class="wrap">
     <ul id="ghbuttons" class="button-list">
-      <li><a href="https://github.com/lucuma/moar/zipballmus/master">Download <strong><span class="caps">ZIP</span>&nbsp;File</strong></a></li>
+      <li><a href="https://github.com/lucuma/moar/zipball/master">Download <strong><span class="caps">ZIP</span>&nbsp;File</strong></a></li>
       <li><a href="https://github.com/lucuma/moar/tarball/master">Download <strong><span class="caps">TAR</span>&nbsp;Ball</strong></a></li>
       <li><a href="https://github.com/lucuma/moar">Fork On <strong>GitHub</strong></a></li>
     </ul>
@@ -33,7 +33,7 @@
 </p>
 <p>Moar come with support for pluggable engines and storages. By default it use <code>moar.engines.pil.Engine</code> and <code>moar.storages.filesystem.Storage</code>.</p>
 <p>When you call the thumbnail instance, the current storage class will generates a key that represent a thumbnail made from that image with that specific filters and options. If a thumbnail with that key hasn&#8217;t been generated before, it&#8217;ll make a new one, store it using the key as an id, and returns&nbsp;it.</p>
-<p>The default storage class (<code>moar.storages.filesystem.Storage</code>) store the generated thumbnails inside a <code>"t"</code> folder in the same path as the source image. Other storages will operate different, for example, storing the key in a local database and uploading the thumbnail to a remote&nbsp;server.</p>
+<p>The default storage class (<code>moar.storages.filesystem.Storage</code>) store the generated thumbnails inside a <code>"t"</code> folder in the same path as the source image (this can be changed). Other storages will operate different, for example, storing the key in a local database and uploading the thumbnail to a remote&nbsp;server.</p>
 <h2 id="filters"><a class="toclink" href="#filters">Filters</a></h2>
 <p>You can use the <code>filters</code> parameter to define a list of custom filters, adding them to those included by default.&nbsp;E.g.:</p>
 <p><div class="highlight python"><pre><span class="kn">from</span> <span class="nn">image_filters</span> <span class="kn">import</span> <span class="n">watermak</span><span class="p">,</span> <span class="n">enhace</span>

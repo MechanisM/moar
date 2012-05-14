@@ -14,7 +14,6 @@ clean-pyc:
 	find . -name '*.pyo' -exec rm -f {} \;
 	find . -name '*~' -exec rm -f {} \;
 
-
 test:
 	rm -rf tests/res/t
 	python runtests.py tests

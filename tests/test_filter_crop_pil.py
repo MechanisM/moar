@@ -40,8 +40,8 @@ def test_pil_crop_xy_short():
 def test_pil_crop_xy_pc():
     thumbnail = moar.Thumbnailer(engine=PILEngine)
     source = get_source('a200x140.png')
-
-thumb = thumbnail(source, ['crop', 50, 50, '30%', '50%'], format='PNG')
+    
+    thumb = thumbnail(source, ['crop', 50, 50, '30%', '50%'], format='PNG')
     name = thumb.key + '.png'
     assert_image(name, 'crop50x50-30pc|50pc-pil.png')
     remove_thumb(name)

@@ -41,8 +41,9 @@ def pil(im, *args, **options):
 def wand(im, *args, **options):
     angle = - args[0]
     background = None
-    if options.get('format') != 'PNG':
-        background = Color('#fff')
-    im.rotate(angle, background=background)
+    with Color('#fff') as white:
+        if options.get('format') != 'PNG':
+            background = white
+        im.rotate(angle, background=background, reset_coords=True)
     return im
 

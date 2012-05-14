@@ -16,7 +16,7 @@ Moar come with support for pluggable engines and storages. By default it use `mo
 
 When you call the thumbnail instance, the current storage class will generates a key that represent a thumbnail made from that image with that specific filters and options. If a thumbnail with that key hasn't been generated before, it'll make a new one, store it using the key as an id, and returns it.
 
-The default storage class (`moar.storages.filesystem.Storage`) store the generated thumbnails inside a `"t"` folder in the same path as the source image. Other storages will operate different, for example, storing the key in a local database and uploading the thumbnail to a remote server.
+The default storage class (`moar.storages.filesystem.Storage`) store the generated thumbnails inside a `"t"` folder in the same path as the source image (this can be changed). Other storages will operate different, for example, storing the key in a local database and uploading the thumbnail to a remote server.
 
 
 ## Filters

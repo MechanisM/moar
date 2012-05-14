@@ -16,22 +16,23 @@ Moar is an MIT Licensed library, written in Python, that allows you to make cust
 
 ## Features at a glance
 
-* Pluggable engine support ([PIL][pil]{:target=_blank} and [GraphicsMagick][gmi]{:target=_blank} included<sup>*</sup>).
+* Pluggable engine support ([PIL][pil]{:target=_blank} and [Wand][wand]{:target=_blank} (a wrapper for [ImageMagick][imagemagick]{:target=_blank}) included<sup>*</sup>).
 * Automatic cache: a thumbnail is generated only once.
 * Pluggable storage support (FileSystem included).
 * Flexible, simple syntax, generates no HTML.
 * Auto-rotates the image according to its EXIF information. <sup>*</sup>
 * Several filters available by default:
     * Cropping
-    * Rotation <sup>*</sup>
+    * Rotation
     * Blur
     * Grayscale/Sepia <sup>*</sup>
 * Easily extendable.
 
+<div class="warning" markdown="1">
+<sup>*</sup> The Wand engine doesn't have **yet** support for the EXIF-based auto-rotation or
+grayscale/sepia filters.
+</div>
 
 [pil]: http://www.pythonware.com/products/pil/
-[gmi]: http://www.graphicsmagick.org/
-
-<div class="warning" markdown="1">
-<sup>*</sup> Currently the support for GraphicsMagick is limited to resizing, cropping and/or blurring. Rotation works but not in combination with cropping.
-</div>
+[imagemagick]: http://www.imagemagick.org/script/index.php
+[wand]: http://styleshare.github.com/wand/

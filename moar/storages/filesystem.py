@@ -22,7 +22,8 @@ def make_dirs(path):
 
 class Storage(object):
 
-    thumbsdir = 't'
+    def __init__(self, thumbsdir='t'):
+        self.thumbsdir = thumbsdir
     
     def get(self, thumb):
         """"""
@@ -45,7 +46,14 @@ class Storage(object):
     
     def get_path(self, source, name):
         path = os.path.dirname(source.path)
-        return os.path.join(path, self.thumbsdir, name)
+
+        # Thumbsdir could be a callable
+        # In that case, the path is built on the fly, based on the thumbs name
+        thumbsdir = self.thumbsdir
+        if callable(self.thumbsdir):
+            thumbsdir = self.thumbsdir(name)
+
+        return os.path.join(path, thumbsdir, name)
     
     def get_url(self, source, name):
         parsed = urlparse.urlsplit(source.url)

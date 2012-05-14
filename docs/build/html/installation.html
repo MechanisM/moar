@@ -28,8 +28,8 @@
 <pre><code>pip install moar
 </code></pre>
 <h2 id="requirements"><a class="toclink" href="#requirements">Requirements</a></h2>
-<p>You need to have an image library installed. Moar ships with support for the <a href="http://www.pythonware.com/products/pil/" target="_blank">Python Imaging Library</a> and <a href="http://www.graphicsmagick.org/" target="_blank">GraphicsMagick</a> via <a href="http://styleshare.github.com/wand/" target="_blank">Wand</a>. </p>
-<h3 id="python-imaging-library-installation"><a class="toclink" href="#python-imaging-library-installation">Python Imaging Library&nbsp;installation</a></h3>
+<p>You need to have an image library installed. Moar ships with support for the <a href="http://www.pythonware.com/products/pil/" target="_blank">Python Imaging Library</a> and <a href="http://www.imagemagick.org/script/index.php" target="_blank">ImageMagick</a> via <a href="http://styleshare.github.com/wand/" target="_blank">wand</a>. </p>
+<h3 id="python-imaging-library-pil-installation"><a class="toclink" href="#python-imaging-library-pil-installation">Python Imaging Library (<span class="caps">PIL</span>)&nbsp;installation</a></h3>
 <p>Prerequisites:</p>
 <ul>
 <li>libjpeg</li>
@@ -48,16 +48,15 @@
 <h3 id="wand-installation"><a class="toclink" href="#wand-installation">Wand&nbsp;installation</a></h3>
 <p>Prerequisites:</p>
 <ul>
-<li>GraphicsMagick</li>
+<li>ImageMagick</li>
 </ul>
-<p>Ubuntu 10.04 prerequisites&nbsp;installation:</p>
-<pre><code>sudo apt-get install graphicsmagick libgraphicsmagick++-dev
+<h4 id="ubuntu-1204"><a class="toclink" href="#ubuntu-1204">Ubuntu&nbsp;12.04</a></h4>
+<pre><code>sudo apt-get install libmagickwand-dev
+pip install Wand
 </code></pre>
-<p><span class="caps">OSX</span> installation of prerequisites with&nbsp;Homebrew:</p>
-<pre><code>brew install graphicsmagick
-</code></pre>
-<p>Then, install Wand using&nbsp;pip:</p>
-<pre><code>pip install wand
+<h4 id="osx"><a class="toclink" href="#osx"><span class="caps">OSX</span></a></h4>
+<pre><code>brew install imagemagick
+pip install Wand
 </code></pre>
   </section>
 
@@ -75,7 +74,7 @@
     </div>
 
     <div class="page-toc">
-    <ul class="toc"><li><a href="#installation">Installation</a><ul><li><a href="#requirements">Requirements</a><ul><li><a href="#python-imaging-library-installation">Python Imaging Library&nbsp;installation</a></li><li><a href="#wand-installation">Wand&nbsp;installation</a></li></ul></li></ul></li></ul>
+    <ul class="toc"><li><a href="#installation">Installation</a><ul><li><a href="#requirements">Requirements</a><ul><li><a href="#python-imaging-library-pil-installation">Python Imaging Library (<span class="caps">PIL</span>)&nbsp;installation</a></li><li><a href="#wand-installation">Wand installation</a><ul><li><a href="#ubuntu-1204">Ubuntu&nbsp;12.04</a></li><li><a href="#osx"><span class="caps">OSX</span></a></li></ul></li></ul></li></ul></li></ul>
     </div>
 
     <p id="ghwatch">

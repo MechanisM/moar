@@ -27,8 +27,7 @@ def pil(im, *args, **options):
 def wand(im, *args, **options):
     imw, imh = im.size
     box = get_box(args, imw, imh)
-    im = im.clone() # Bugfix
-    im.crop(*box)
+    im.crop(*box, reset_coords=True)
     return im
 
 
@@ -70,5 +69,5 @@ def get_box(args, imw, imh):
     if height + y > imh:
         height = imh - y
     
-    return (x, y, x + width, y + height)
+    return x, y, x + width, y + height
 

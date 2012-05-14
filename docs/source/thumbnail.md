@@ -30,7 +30,7 @@ url
     Eg: `http://lucumalabs.com/media/2012/05/05/lena.jpg`, `/media/2012/05/05/lena.jpg`.
 
 <div class=note markdown=1>
-(Not really) incidentally, some python web frameworks (like Django) has image objects with both of these attributes.
+Some python web frameworks (like Django) use image objects with both of these attributes.
 </div>
 
 

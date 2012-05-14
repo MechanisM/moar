@@ -11,10 +11,10 @@ Just do
 
 ## Requirements
 
-You need to have an image library installed. Moar ships with support for the [Python Imaging Library][pil]{:target=_blank} and [GraphicsMagick][gmi]{:target=_blank} via [Wand][wand]{:target=_blank}. 
+You need to have an image library installed. Moar ships with support for the [Python Imaging Library][pil]{:target=_blank} and [ImageMagick][imagemagick]{:target=_blank} via [wand][wand]{:target=_blank}. 
 
 
-### Python Imaging Library installation
+### Python Imaging Library (PIL) installation
 
 Prerequisites:
 
@@ -39,22 +39,20 @@ Watch the output for messages on what support got compiled in, you at least want
 
 Prerequisites:
 
-* GraphicsMagick
+* ImageMagick
 
-Ubuntu 10.04 prerequisites installation:
+#### Ubuntu 12.04
     
-    sudo apt-get install graphicsmagick libgraphicsmagick++-dev
+    sudo apt-get install libmagickwand-dev
+    pip install Wand
 
-OSX installation of prerequisites with Homebrew:
-    
-    brew install graphicsmagick
+#### OSX
 
-Then, install Wand using pip:
-
-    pip install wand
+    brew install imagemagick
+    pip install Wand
 
 
 [pil]: http://www.pythonware.com/products/pil/
-[gmi]: http://www.graphicsmagick.org/
+[imagemagick]: http://www.imagemagick.org/script/index.php
 [wand]: http://styleshare.github.com/wand/
 

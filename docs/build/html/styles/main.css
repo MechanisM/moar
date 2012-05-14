@@ -232,7 +232,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 }
 
 h1 {
-  font-size: 34px;
+  font-size: 30px;
   line-height: 3.24em;
 }
 h1 small {
@@ -626,9 +626,10 @@ margin-left: 30px;
   top: 100px;
 }
 
-#content .main > h1 {
+#content .main h1:first-child {
   margin-left: -300px;
   height: 110px;
+  font-size: 34px;
 }
 
 #sidebar .page-toc {

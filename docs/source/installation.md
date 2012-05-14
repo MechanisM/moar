@@ -1,6 +1,6 @@
 title: Installation
 template: page.html
-description: Installation of Moar
+description: Instructions to install Moar
 
 
 # Installation
@@ -41,15 +41,37 @@ Prerequisites:
 
 * ImageMagick
 
-#### Ubuntu 12.04
+#### In Ubuntu 12.4:
     
     sudo apt-get install libmagickwand-dev
-    pip install Wand
+    pip install Wand==0.2
 
-#### OSX
+#### In Mac OSX:
 
     brew install imagemagick
-    pip install Wand
+    pip install Wand==0.2
+
+
+# Getting the source code
+
+Moar is actively developed on GitHub, where the code is [always available]({{ GITHUB_URL }}).
+
+You can either clone the public repository:
+
+    git clone git://github.com/lucuma/moar.git
+
+Download the tarball:
+
+    wget https://github.com/lucuma/moar/tarball/master
+
+Or, download the zipball:
+    
+    wget https://github.com/lucuma/moar/zipball/master
+
+Once you have a copy of the source, you can embed it in your Python package,
+or install it into your site-packages easily:
+
+    python setup.py install
 
 
 [pil]: http://www.pythonware.com/products/pil/

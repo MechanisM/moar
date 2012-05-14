@@ -32,4 +32,4 @@ theme_prefix: html
 ## Constants
 github_url: https://github.com/lucuma/moar
 version: 0.4
-
+google_analytics_code: UA-1495972-14

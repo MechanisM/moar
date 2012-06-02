@@ -5,7 +5,7 @@ description: Instructions to install Moar
 
 # Installation
 
-Just do
+To install with `pip`, just do
 
 	pip install moar
 
@@ -52,19 +52,19 @@ Prerequisites:
     pip install Wand==0.2
 
 
-# Getting the source code
+## Getting the source code
 
 Moar is actively developed on GitHub, where the code is [always available]({{ GITHUB_URL }}).
 
-You can either clone the public repository:
+You can either clone the public repository
 
     git clone git://github.com/lucuma/moar.git
 
-Download the tarball:
+download the tarball
 
     wget https://github.com/lucuma/moar/tarball/master
 
-Or, download the zipball:
+or, download the zipball:
     
     wget https://github.com/lucuma/moar/zipball/master
 

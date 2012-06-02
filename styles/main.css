@@ -41,13 +41,13 @@ body {
 ******************************************************************************/
 
 pre, code{
-  font-family:'Envy Code R', 'Droid Sans Mono', 'DejaVu Sans Mono', Inconsolata, Consolas, monospace;
+  font-family:Monaco, Inconsolata, Consolas, 'DejaVu Sans Mono',monospace;
 }
 code{
-  background-color: #fefaf4;
-  color: #444;
+  background-color: rgba(254,250,244,0.5);
+  color: #111;
+  font-size: 15px;
   padding: 1px 3px 2px;
-  font-size: 16px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -59,14 +59,11 @@ pre code{
   display:block;
   background:transparent;
   color:inherit;
-  font-size: 16px;
 }
+
 pre {
   padding: 10px;
   margin: 21px 0;
-  font-size: 16px;
-  background:#242424;
-  color:#f6f3e8;
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
   border-radius:4px;
@@ -74,89 +71,84 @@ pre {
   -webkit-background-clip:padding-box;
   background-clip:padding-box;
   overflow: auto;
-}
+  background-color: #ddd;
+  border: 1px solid #d0d0d0;
+  color:#222;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: normal;
+  }
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #8f5902; font-style: italic } /* Comment */
+.highlight .err { color: #a40000; border: 1px solid #ef2929 } /* Error */
+.highlight .g { color: #000000 } /* Generic */
+.highlight .k { color: #204a87; font-weight: bold } /* Keyword */
+.highlight .l { color: #000000 } /* Literal */
+.highlight .n { color: #000000 } /* Name */
+.highlight .o { color: #ce5c00; font-weight: bold } /* Operator */
+.highlight .x { color: #000000 } /* Other */
+.highlight .p { color: #000000; font-weight: bold } /* Punctuation */
+.highlight .cm { color: #8f5902; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #8f5902; font-style: italic } /* Comment.Preproc */
+.highlight .c1 { color: #8f5902; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #8f5902; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #a40000 } /* Generic.Deleted */
+.highlight .ge { color: #000000; font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #ef2929 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #000000; font-style: italic } /* Generic.Output */
+.highlight .gp { color: #8f5902 } /* Generic.Prompt */
+.highlight .gs { color: #000000; font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #a40000; font-weight: bold } /* Generic.Traceback */
+.highlight .kc { color: #204a87; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #204a87; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #204a87; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #204a87; font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: #204a87; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #204a87; font-weight: bold } /* Keyword.Type */
+.highlight .ld { color: #000000 } /* Literal.Date */
+.highlight .m { color: #0000cf; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #4e9a06 } /* Literal.String */
+.highlight .na { color: #c4a000 } /* Name.Attribute */
+.highlight .nb { color: #204a87 } /* Name.Builtin */
+.highlight .nc { color: #000000 } /* Name.Class */
+.highlight .no { color: #000000 } /* Name.Constant */
+.highlight .nd { color: #5c35cc; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #ce5c00 } /* Name.Entity */
+.highlight .ne { color: #cc0000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #000000 } /* Name.Function */
+.highlight .nl { color: #f57900 } /* Name.Label */
+.highlight .nn { color: #000000 } /* Name.Namespace */
+.highlight .nx { color: #000000 } /* Name.Other */
+.highlight .py { color: #000000 } /* Name.Property */
+.highlight .nt { color: #204a87; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #000000 } /* Name.Variable */
+.highlight .ow { color: #204a87; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #f8f8f8; text-decoration: underline } /* Text.Whitespace */
+.highlight .mf { color: #0000cf; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0000cf; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000cf; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0000cf; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #4e9a06 } /* Literal.String.Backtick */
+.highlight .sc { color: #4e9a06 } /* Literal.String.Char */
+.highlight .sd { color: #8f5902; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4e9a06 } /* Literal.String.Double */
+.highlight .se { color: #4e9a06 } /* Literal.String.Escape */
+.highlight .sh { color: #4e9a06 } /* Literal.String.Heredoc */
+.highlight .si { color: #4e9a06 } /* Literal.String.Interpol */
+.highlight .sx { color: #4e9a06 } /* Literal.String.Other */
+.highlight .sr { color: #4e9a06 } /* Literal.String.Regex */
+.highlight .s1 { color: #4e9a06 } /* Literal.String.Single */
+.highlight .ss { color: #4e9a06 } /* Literal.String.Symbol */
+.highlight .bp { color: #3465a4 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #000000 } /* Name.Variable.Class */
+.highlight .vg { color: #000000 } /* Name.Variable.Global */
+.highlight .vi { color: #000000 } /* Name.Variable.Instance */
+.highlight .il { color: #0000cf; font-weight: bold } /* Literal.Number.Integer.Long */
 
-/* Overwrite the default to keep the scrollbar always visible */
-pre::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 7px;
-}
-
-pre::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: rgba(255,255.255,0.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
-}​
-
-.highlight .hll{background-color:#ffffcc;}
-.highlight .c{color:#99968b;font-style:italic;}
-.highlight .err{color:#f6f3e8;}
-.highlight .g{color:#f6f3e8;}
-.highlight .k{color:#8ac6f2;}
-.highlight .l{color:#f6f3e8;}
-.highlight .n{color:#f6f3e8;}
-.highlight .o{color:#f6f3e8;}
-.highlight .x{color:#f6f3e8;}
-.highlight .p{color:#f6f3e8;}
-.highlight .cm{color:#99968b;font-style:italic;}
-.highlight .cp{color:#e5786d;}
-.highlight .c1{color:#99968b;font-style:italic;}
-.highlight .cs{color:#99968b;font-style:italic;}
-.highlight .gd{color:#f6f3e8;}
-.highlight .ge{color:#f6f3e8;}
-.highlight .gr{color:#f6f3e8;}
-.highlight .gh{color:#f6f3e8;font-weight:bold;}
-.highlight .gi{color:#f6f3e8;}
-.highlight .go{color:#808080;background-color:#303030;}
-.highlight .gp{color:#f6f3e8;}
-.highlight .gs{color:#f6f3e8;}
-.highlight .gu{color:#f6f3e8;font-weight:bold;}
-.highlight .gt{color:#f6f3e8;}
-.highlight .kc{color:#8ac6f2;}
-.highlight .kd{color:#8ac6f2;}
-.highlight .kn{color:#8ac6f2;}
-.highlight .kp{color:#8ac6f2;}
-.highlight .kr{color:#8ac6f2;}
-.highlight .kt{color:#cae682;}
-.highlight .ld{color:#f6f3e8;}
-.highlight .m{color:#e5786d;}
-.highlight .s{color:#95e454;font-style:italic;}
-.highlight .na{color:#cae682;}
-.highlight .nb{color:#f6f3e8;}
-.highlight .nc{color:#f6f3e8;}
-.highlight .no{color:#e5786d;}
-.highlight .nd{color:#f6f3e8;}
-.highlight .ni{color:#e7f6da;}
-.highlight .ne{color:#f6f3e8;}
-.highlight .nf{color:#cae682;}
-.highlight .nl{color:#f6f3e8;}
-.highlight .nn{color:#f6f3e8;}
-.highlight .nx{color:#f6f3e8;}
-.highlight .py{color:#f6f3e8;}
-.highlight .nt{color:#8ac6f2;}
-.highlight .nv{color:#cae682;}
-.highlight .ow{color:#f6f3e8;}
-.highlight .w{color:#f6f3e8;}
-.highlight .mf{color:#e5786d;}
-.highlight .mh{color:#e5786d;}
-.highlight .mi{color:#e5786d;}
-.highlight .mo{color:#e5786d;}
-.highlight .sb{color:#95e454;font-style:italic;}
-.highlight .sc{color:#95e454;font-style:italic;}
-.highlight .sd{color:#95e454;font-style:italic;}
-.highlight .s2{color:#95e454;font-style:italic;}
-.highlight .se{color:#95e454;font-style:italic;}
-.highlight .sh{color:#95e454;font-style:italic;}
-.highlight .si{color:#95e454;font-style:italic;}
-.highlight .sx{color:#95e454;font-style:italic;}
-.highlight .sr{color:#95e454;font-style:italic;}
-.highlight .s1{color:#95e454;font-style:italic;}
-.highlight .ss{color:#95e454;font-style:italic;}
-.highlight .bp{color:#f6f3e8;}
-.highlight .vc{color:#cae682;}
-.highlight .vg{color:#cae682;}
-.highlight .vi{color:#cae682;}
-.highlight .il{color:#e5786d;}
 
 /******************************************************************************
 * warning, info, note
@@ -226,6 +218,29 @@ h1, h2, h3, h4, h5, h6 {
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: #111;
 }
+
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover {
+text-decoration: none;
+}
+
+h1 a:hover::after,
+h2 a:hover::after,
+h3 a:hover::after,
+h4 a:hover::after,
+h5 a:hover::after,
+h6 a:hover::after {
+  content: '↵';
+  font-size: 18px;
+  text-decoration: none;
+  color: #666;
+  line-height: 1.5;
+}
+
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: normal;
   color: #999999;
@@ -246,23 +261,24 @@ header h1 small {
 }
 
 h2 {
-  font-size: 24px;
-  line-height: 3.24em;
+  font-size: 22px;
+  line-height: 34px;
+  padding: 10px 0 2px;
 }
 h2 small {
   font-size: 18px;
 }
 
 h3 {
-  line-height: 2.43em;
   font-size: 18px;
+  line-height: 22px;
 }
 h3 small {
   font-size: 14px;
 }
 
 h4, h5, h6 {
-  line-height: 1.62em;
+  line-height: 17px;
 }
 
 h4 {
@@ -627,7 +643,6 @@ margin-left: 30px;
 }
 
 #content .main h1:first-child {
-  margin-left: -300px;
   height: 110px;
   font-size: 34px;
 }
@@ -735,9 +750,19 @@ ul.toc ul li ul li a {
 .page-toc ul.toc > li > ul > li > a {
   font-size: 14px;
   color: #666;
-  text-transform: uppercase;
 }
 
 /******************************************************************************
 
 ******************************************************************************/
+
+/* Overwrite the default to keep the scrollbar always visible */
+pre::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,0.5);
+}​

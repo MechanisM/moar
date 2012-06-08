@@ -35,6 +35,8 @@ class Engine(BaseEngine):
         }
         if format == 'JPEG' and options['progressive']:
             params['progressive'] = True
+        if im.mode == 'P' and format != 'PNG':
+            im = im.convert('RGB')
         
         im.save(buf, **params)
         raw_data = buf.getvalue()

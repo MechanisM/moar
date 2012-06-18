@@ -33,9 +33,12 @@ class Engine(BaseEngine):
             'format': format,
             'quality': options['quality'],
         }
-        if format == 'JPEG' and options['progressive']:
+        if format == 'JPG' and options['progressive']:
             params['progressive'] = True
-        if im.mode == 'P' and format != 'PNG':
+
+        palletized = im.mode == 'P' and format != 'PNG'
+        cmyk_jpeg = im.mode == 'CMYK' and format == 'JPEG'
+        if palletized or cmyk_jpeg:
             im = im.convert('RGB')
         
         im.save(buf, **params)

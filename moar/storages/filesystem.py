@@ -42,7 +42,10 @@ class Storage(object):
         return self.get_url(thumb.source, name)
     
     def get_name(self, key, options):
-        return '%s.%s' % (key, options['format'].lower())
+        format = options['format'].lower()
+        if format == 'jpeg':
+            format = 'jpg'
+        return '%s.%s' % (key, format)
     
     def get_path(self, source, name):
         path = os.path.dirname(source.path)

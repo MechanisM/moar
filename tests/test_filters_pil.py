@@ -46,7 +46,7 @@ def test_pil_rotate_noalpha():
     source = get_source('a200x140.png')
 
     thumb = thumbnail(source, ('rotate', 60), format='JPEG')
-    name = thumb.key + '.jpeg'
+    name = thumb.key + '.jpg'
     tp = get_tpath(name)
     im = Image.open(tp)
     assert im.getpixel((0, 0)) == (255, 255, 255)

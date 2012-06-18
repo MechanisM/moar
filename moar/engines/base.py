@@ -53,11 +53,18 @@ class BaseEngine(object):
             new_width = width
             new_height = height
         elif width and height:
-            new_width = int(ceil(height * ratio))
-            new_height = height
-            if new_width > width:
+            if options['fit']:
                 new_width = width
                 new_height = int(ceil(width / ratio))
+                if new_height < height:
+                    new_height = height
+                    new_width = int(ceil(height * ratio))
+            else:
+                new_width = int(ceil(height * ratio))
+                new_height = height
+                if new_width > width:
+                    new_width = width
+                    new_height = int(ceil(width / ratio))
         elif height:
             new_width = int(ceil(height * ratio))
             new_height = height

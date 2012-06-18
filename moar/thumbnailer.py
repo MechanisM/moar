@@ -78,6 +78,11 @@ class Thumbnailer(object):
         supported by the shipped engines are `'JPEG'` and `'PNG'`.
         Default value is `'JPEG'`.
     
+    fit:
+        A boolean that controls if the image is fitted in the given dimensions
+        (even if doesn't match exactly the size) or if is expanded to cover
+        Default value is `False`.
+
     resize:
         When setting the new geometry, this controls if the image is deformed
         to match exactly the given dimensions, regardless of the aspect ratio
@@ -107,6 +112,7 @@ class Thumbnailer(object):
         self.progressive = bool(default_options.get('progressive', True))
         self.orientation = bool(default_options.get('orientation', True))
         self.format = default_options.get('format', 'JPEG').upper()
+        self.fit = bool(default_options.get('fit', False))
         self.resize = bool(default_options.get('resize', False))
     
     def parse_geometry(self, geometry):
@@ -147,6 +153,7 @@ class Thumbnailer(object):
             'progressive': bool(options.get('progressive', self.progressive)),
             'orientation': bool(options.get('orientation', self.orientation)),
             'format': options.get('format', self.format).upper(),
+            'fit': bool(options.get('fit', self.fit)),
             'resize': bool(options.get('resize', self.resize)),
         }
 

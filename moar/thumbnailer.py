@@ -16,6 +16,8 @@ we couldn't found it installed.
 Please see the documentation of Moar to find how to install it or how to choose
 a different engine.'''
 
+RESIZE_OPTIONS = ('fill', 'fit', 'stretch')
+
 
 class Thumb(object):
 
@@ -107,13 +109,16 @@ class Thumbnailer(object):
         
         self.custom_filters = filters or {}
 
+        resize = default_options.get('resize', RESIZE_OPTIONS[0])
+        if resize not in RESIZE_OPTIONS:
+            resize = RESIZE_OPTIONS[0]
+
         self.upscale = bool(default_options.get('upscale', True))
+        self.resize = resize
+        self.format = default_options.get('format', 'JPEG').upper()
         self.quality = int(default_options.get('quality', 90))
         self.progressive = bool(default_options.get('progressive', True))
         self.orientation = bool(default_options.get('orientation', True))
-        self.format = default_options.get('format', 'JPEG').upper()
-        self.fit = bool(default_options.get('fit', False))
-        self.resize = bool(default_options.get('resize', False))
     
     def parse_geometry(self, geometry):
         if not geometry:
@@ -146,15 +151,18 @@ class Thumbnailer(object):
             geometry = None
         
         geometry = self.parse_geometry(geometry)
+
+        resize = options.get('resize', self.resize)
+        if resize not in RESIZE_OPTIONS:
+            resize = self.resize
         
         _options = {
             'upscale': bool(options.get('upscale', self.upscale)),
+            'resize': resize,
+            'format': options.get('format', self.format).upper(),
             'quality': int(options.get('quality', self.quality)),
             'progressive': bool(options.get('progressive', self.progressive)),
             'orientation': bool(options.get('orientation', self.orientation)),
-            'format': options.get('format', self.format).upper(),
-            'fit': bool(options.get('fit', self.fit)),
-            'resize': bool(options.get('resize', self.resize)),
         }
 
         thumb = Thumb(source, geometry, filters, _options)

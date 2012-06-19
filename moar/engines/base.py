@@ -40,42 +40,43 @@ class BaseEngine(object):
         if not width and not height:
             return im
         
-        # Geometry match the current image
         im_width, im_height = self._get_image_size(im)
 
+        # Geometry match the current size?
         if (width is None) or (im_width == width):
             if (height is None) or (im_height == height):
                 return im
         
         ratio = float(im_width) / im_height
 
-        if width and height and options['resize']:
-            new_width = width
-            new_height = height
-        elif width and height:
-            if options['fit']:
+        if width and height:
+            # Smaller than the target?
+            smaller = (im_width < width) and (im_height < height)
+            if not options['upscale'] and smaller:
+                return im
+
+            resize = options.get('resize', 'fill')
+            if resize == 'fill':
                 new_width = width
                 new_height = int(ceil(width / ratio))
                 if new_height < height:
                     new_height = height
                     new_width = int(ceil(height * ratio))
-            else:
+            elif resize == 'fit':
                 new_width = int(ceil(height * ratio))
                 new_height = height
                 if new_width > width:
                     new_width = width
                     new_height = int(ceil(width / ratio))
+            elif resize == 'stretch':
+                new_width = width
+                new_height = height
         elif height:
             new_width = int(ceil(height * ratio))
             new_height = height
         else:
             new_width = width
             new_height = int(ceil(width / ratio))
-        
-        # Smaller than the target
-        smaller = (im_width < new_width) and (im_height < new_height)
-        if smaller and not (options['upscale'] or options['resize']):
-            return im
         
         im = self._scale(im, new_width, new_height)
         return im

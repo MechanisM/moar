@@ -28,7 +28,7 @@ def pil(im, *args, **options):
     im = im.rotate(angle, resample=Image.BICUBIC,
         expand=True)
 
-    if options.get('format') != 'PNG':
+    if options['format'] != 'PNG':
         # a white image same size as rotated image
         fff = Image.new('RGB', im.size, (255,)*3)
         # create a composite image using the alpha
@@ -42,7 +42,7 @@ def wand(im, *args, **options):
     angle = - args[0]
     background = None
     with Color('#fff') as white:
-        if options.get('format') != 'PNG':
+        if options['format'] != 'PNG':
             background = white
         im.rotate(angle, background=background, reset_coords=True)
     return im
